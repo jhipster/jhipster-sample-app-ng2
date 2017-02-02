@@ -35,7 +35,6 @@ export class AuditsComponent implements OnInit {
         this.page = 1;
         this.reverse = false;
         this.orderProp = 'timestamp';
-        // TODO see if there is a better way to inject pipes
         this.datePipe =  new DatePipe(this.locale);
     }
 

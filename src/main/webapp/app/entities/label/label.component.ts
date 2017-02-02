@@ -52,6 +52,8 @@ labels: Label[];
         return item.id;
     }
 
+
+
     registerChangeInLabels() {
         this.eventSubscriber = this.eventManager.subscribe('labelListModification', (response) => this.loadAll());
     }

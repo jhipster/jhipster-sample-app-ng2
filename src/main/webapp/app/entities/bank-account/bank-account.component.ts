@@ -52,6 +52,8 @@ bankAccounts: BankAccount[];
         return item.id;
     }
 
+
+
     registerChangeInBankAccounts() {
         this.eventSubscriber = this.eventManager.subscribe('bankAccountListModification', (response) => this.loadAll());
     }

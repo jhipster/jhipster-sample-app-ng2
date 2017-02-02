@@ -32,7 +32,6 @@ export class LabelDetailComponent implements OnInit, OnDestroy {
             this.label = label;
         });
     }
-
     previousState() {
         window.history.back();
     }

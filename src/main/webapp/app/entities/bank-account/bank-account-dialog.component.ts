@@ -10,8 +10,6 @@ import { BankAccountPopupService } from './bank-account-popup.service';
 import { BankAccountService } from './bank-account.service';
 import { User, UserService } from '../../shared';
 import { Operation, OperationService } from '../operation';
-// TODO replace ng-file-upload dependency by an ng2 depedency
-// TODO Find a better way to format dates so that it works with NgbDatePicker
 @Component({
     selector: 'jhi-bank-account-dialog',
     templateUrl: './bank-account-dialog.component.html'
@@ -46,7 +44,6 @@ export class BankAccountDialogComponent implements OnInit {
         this.operationService.query().subscribe(
             (res: Response) => { this.operations = res.json(); }, (res: Response) => this.onError(res.json()));
     }
-
     clear () {
         this.activeModal.dismiss('cancel');
         this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });

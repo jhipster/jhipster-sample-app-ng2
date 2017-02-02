@@ -83,7 +83,6 @@ module.exports = function (config) {
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
         reporters: ['dots', 'junit', 'progress', 'coverage', 'karma-remap-istanbul'],
 
-        // todo: fix me so I work!
         junitReporter: {
             outputFile: 'target/test-results/karma/TESTS-results.xml'
         },

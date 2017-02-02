@@ -34,12 +34,5 @@ export class JhiLanguageHelper {
     }
 
     private init () {
-        // TODO fix this part
-        // this.translateService.onTranslationChange.subscribe((event: TranslationChangeEvent) => {
-        //     this.updateTitle();
-        // });
-        // this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
-        //     this.updateTitle();
-        // });
     }
 }

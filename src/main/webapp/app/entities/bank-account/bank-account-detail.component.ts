@@ -32,7 +32,6 @@ export class BankAccountDetailComponent implements OnInit, OnDestroy {
             this.bankAccount = bankAccount;
         });
     }
-
     previousState() {
         window.history.back();
     }

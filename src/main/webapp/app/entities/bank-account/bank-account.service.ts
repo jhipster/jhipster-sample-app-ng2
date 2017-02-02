@@ -32,7 +32,6 @@ export class BankAccountService {
 
     query(req?: any): Observable<Response> {
         let options = this.createRequestOption(req);
-        // TODO Use Response class from @angular/http when the body field will be accessible directly
         return this.http.get(this.resourceUrl, options)
         ;
     }

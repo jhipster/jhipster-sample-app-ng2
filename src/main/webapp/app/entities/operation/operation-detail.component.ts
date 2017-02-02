@@ -32,7 +32,6 @@ export class OperationDetailComponent implements OnInit, OnDestroy {
             this.operation = operation;
         });
     }
-
     previousState() {
         window.history.back();
     }

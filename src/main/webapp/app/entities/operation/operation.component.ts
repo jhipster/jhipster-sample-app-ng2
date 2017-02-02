@@ -82,6 +82,8 @@ export class OperationComponent implements OnInit, OnDestroy {
         return item.id;
     }
 
+
+
     registerChangeInOperations() {
         this.eventSubscriber = this.eventManager.subscribe('operationListModification', (response) => this.reset());
     }

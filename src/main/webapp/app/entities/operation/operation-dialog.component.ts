@@ -10,8 +10,6 @@ import { OperationPopupService } from './operation-popup.service';
 import { OperationService } from './operation.service';
 import { BankAccount, BankAccountService } from '../bank-account';
 import { Label, LabelService } from '../label';
-// TODO replace ng-file-upload dependency by an ng2 depedency
-// TODO Find a better way to format dates so that it works with NgbDatePicker
 @Component({
     selector: 'jhi-operation-dialog',
     templateUrl: './operation-dialog.component.html'
@@ -46,7 +44,6 @@ export class OperationDialogComponent implements OnInit {
         this.labelService.query().subscribe(
             (res: Response) => { this.labels = res.json(); }, (res: Response) => this.onError(res.json()));
     }
-
     clear () {
         this.activeModal.dismiss('cancel');
         this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });

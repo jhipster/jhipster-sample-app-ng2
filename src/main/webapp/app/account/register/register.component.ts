@@ -51,9 +51,7 @@ export class RegisterComponent implements OnInit {
                 this.registerAccount.langKey = key;
                 this.registerService.save(this.registerAccount).subscribe(() => {
                     this.success = true;
-                }, (response) => {
-                    this.processError(response);
-                });
+                }, (response) => this.processError(response));
             });
         }
     }
@@ -63,7 +61,6 @@ export class RegisterComponent implements OnInit {
     }
 
     private processError(response) {
-        // TODO handle this.logout(); on error
         this.success = null;
         if (response.status === 400 && response._body === 'login already in use') {
             this.errorUserExists = 'ERROR';
