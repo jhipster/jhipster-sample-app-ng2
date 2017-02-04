@@ -4,6 +4,7 @@ This application was generated using JHipster 4.0.1, you can find documentation 
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
+
 1. [Node.js][]: We use Node to run a development web server and build the project.
    Depending on your system, you can install Node either from source or as a pre-packaged bundle.
 2. [Yarn][]: We use Yarn to manage Node dependencies.
@@ -65,9 +66,9 @@ For example, the following command:
 
 will generate few files:
 
-   create src/main/webapp/app/my-component/my-component.component.html
-   create src/main/webapp/app/my-component/my-component.component.ts
-   update src/main/webapp/app/app.module.ts
+    create src/main/webapp/app/my-component/my-component.component.html
+    create src/main/webapp/app/my-component/my-component.component.ts
+    update src/main/webapp/app/app.module.ts
 
 ## Building for production
 
