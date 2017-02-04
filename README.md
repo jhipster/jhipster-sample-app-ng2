@@ -1,5 +1,5 @@
 # jhipsterSampleApplicationNG2
-This application was generated using JHipster 3.12.2, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v3.12.2](https://jhipster.github.io/documentation-archive/v3.12.2).
+This application was generated using JHipster 4.0.0, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v4.0.0](https://jhipster.github.io/documentation-archive/v4.0.0).
 
 ## Development
 
@@ -14,7 +14,7 @@ You will only need to run this command when dependencies change in `package.json
 
     yarn install
 
-We use npm scripts and [Webpack][] as our build system.
+We use yarn scripts and [Webpack][] as our build system.
 
 
 Run the following commands in two separate terminals to create a blissful development experience where your browser
@@ -23,7 +23,7 @@ auto-refreshes when files change on your hard drive.
     ./mvnw
     yarn start
 
-[Npm][] is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
+[Yarn][] is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
 specifying a newer version in `package.json`. You can also run `yarn update` and `yarn install` to manage dependencies.
 Add the `help` flag on any command to see how you can use it. For example, `yarn help update`.
 
@@ -133,13 +133,13 @@ For more information refer to [Using Docker and Docker-Compose][], this page als
 To set up a CI environment, consult the [Setting up Continuous Integration][] page.
 
 [JHipster Homepage and latest documentation]: https://jhipster.github.io
-[JHipster 3.12.2 archive]: https://jhipster.github.io/documentation-archive/v3.12.2
+[JHipster 4.0.0 archive]: https://jhipster.github.io/documentation-archive/v4.0.0
 
-[Using JHipster in development]: https://jhipster.github.io/documentation-archive/v3.12.2/development/
-[Using Docker and Docker-Compose]: https://jhipster.github.io/documentation-archive/v3.12.2/docker-compose
-[Using JHipster in production]: https://jhipster.github.io/documentation-archive/v3.12.2/production/
-[Running tests page]: https://jhipster.github.io/documentation-archive/v3.12.2/running-tests/
-[Setting up Continuous Integration]: https://jhipster.github.io/documentation-archive/v3.12.2/setting-up-ci/
+[Using JHipster in development]: https://jhipster.github.io/documentation-archive/v4.0.0/development/
+[Using Docker and Docker-Compose]: https://jhipster.github.io/documentation-archive/v4.0.0/docker-compose
+[Using JHipster in production]: https://jhipster.github.io/documentation-archive/v4.0.0/production/
+[Running tests page]: https://jhipster.github.io/documentation-archive/v4.0.0/running-tests/
+[Setting up Continuous Integration]: https://jhipster.github.io/documentation-archive/v4.0.0/setting-up-ci/
 
 [Gatling]: http://gatling.io/
 [Node.js]: https://nodejs.org/

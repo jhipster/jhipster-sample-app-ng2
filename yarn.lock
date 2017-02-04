@@ -2839,9 +2839,9 @@ generate-object-property@^1.1.0:
   dependencies:
     is-property "^1.0.0"
 
-generator-jhipster@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/generator-jhipster/-/generator-jhipster-4.0.0.tgz#fab65dd61da4c7c84d61edd0628138bb115dadf2"
+generator-jhipster@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/generator-jhipster/-/generator-jhipster-4.0.1.tgz#a842f59bf7eb54b5a3c818560d7af20097eb5372"
   dependencies:
     chalk "1.1.3"
     cheerio "0.22.0"
@@ -2849,7 +2849,7 @@ generator-jhipster@4.0.0:
     glob "7.0.6"
     html-wiring "1.2.0"
     insight "0.8.4"
-    jhipster-core "1.2.6"
+    jhipster-core "1.2.8"
     js-yaml "3.6.1"
     lodash "4.15.0"
     mkdirp "0.5.1"
@@ -3979,11 +3979,11 @@ jasminewd2@0.0.10:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/jasminewd2/-/jasminewd2-0.0.10.tgz#94f48ae2bc946cad643035467b4bb7ea9c1075ef"
 
-jhipster-core@1.2.6:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/jhipster-core/-/jhipster-core-1.2.6.tgz#ea154cf93ea66fdb1ad603719fe4227896f3bc85"
+jhipster-core@1.2.8:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/jhipster-core/-/jhipster-core-1.2.8.tgz#2211a468761a7132c5ddc7f101400e2fc57d5be4"
   dependencies:
-    lodash "4.17.2"
+    lodash "4.17.4"
 
 jodid25519@^1.0.0:
   version "1.0.2"
@@ -4579,10 +4579,6 @@ lodash.words@^3.0.0:
 lodash@4.15.0:
   version "4.15.0"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.15.0.tgz#3162391d8f0140aa22cf8f6b3c34d6b7f63d3aa9"
-
-lodash@4.17.2:
-  version "4.17.2"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.2.tgz#34a3055babe04ce42467b607d700072c7ff6bf42"
 
 lodash@4.17.4, lodash@4.x.x, lodash@^4.0.0, lodash@^4.0.1, lodash@^4.11.1, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.5.1, lodash@^4.6.1:
   version "4.17.4"

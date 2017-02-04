@@ -48,7 +48,7 @@
     "exports-loader": "0.6.3",
     "extract-text-webpack-plugin": "2.0.0-beta.5",
     "file-loader": "0.9.0",
-    "generator-jhipster": "4.0.0",
+    "generator-jhipster": "4.0.1",
     "html-webpack-plugin": "2.26.0",
     "image-webpack-loader": "3.1.0",
     "jasmine-core": "2.5.2",
@@ -95,14 +95,14 @@
     "lint:fix": "tslint src/main/webapp/app/**/*.ts --fix --force",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "start": "npm run webpack:dev",
+    "start": "yarn run webpack:dev",
     "webpack:build": "webpack --config webpack/webpack.vendor.js && webpack --config webpack/webpack.dev.js",
     "webpack:build:dev": "webpack --config webpack/webpack.dev.js",
     "webpack:dev": "webpack-dev-server --config webpack/webpack.dev.js  --progress --inline --hot --profile --port=9060",
-    "webpack:prod": "npm test && webpack -p --config webpack/webpack.vendor.js && webpack -p --config webpack/webpack.prod.js",
-    "test": "npm run lint && karma start src/test/javascript/karma.conf.js",
+    "webpack:prod": "yarn test && webpack -p --config webpack/webpack.vendor.js && webpack -p --config webpack/webpack.prod.js",
+    "test": "yarn run lint && karma start src/test/javascript/karma.conf.js",
     "test:watch": "karma start --watch",
     "e2e": "protractor src/test/javascript/protractor.conf.js",
-    "postinstall": "webdriver-manager update && npm run webpack:build"
+    "postinstall": "webdriver-manager update && yarn run webpack:build"
   }
 }

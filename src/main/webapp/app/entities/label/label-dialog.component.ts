@@ -47,14 +47,14 @@ export class LabelDialogComponent implements OnInit {
         this.isSaving = true;
         if (this.label.id !== undefined) {
             this.labelService.update(this.label)
-                .subscribe((res: Response) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
+                .subscribe((res: Label) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         } else {
             this.labelService.create(this.label)
-                .subscribe((res: Response) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
+                .subscribe((res: Label) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         }
     }
 
-    private onSaveSuccess (result) {
+    private onSaveSuccess (result: Label) {
         this.eventManager.broadcast({ name: 'labelListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
