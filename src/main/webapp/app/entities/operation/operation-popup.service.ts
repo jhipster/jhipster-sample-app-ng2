@@ -1,4 +1,5 @@
 import { Injectable, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { Operation } from './operation.model';
@@ -9,6 +10,7 @@ export class OperationPopupService {
     constructor (
         private datePipe: DatePipe,
         private modalService: NgbModal,
+        private router: Router,
         private operationService: OperationService
     ) {}
 
@@ -33,9 +35,11 @@ export class OperationPopupService {
         modalRef.componentInstance.operation = operation;
         modalRef.result.then(result => {
             console.log(`Closed with: ${result}`);
+            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
             this.isOpen = false;
         }, (reason) => {
             console.log(`Dismissed ${reason}`);
+            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
             this.isOpen = false;
         });
         return modalRef;

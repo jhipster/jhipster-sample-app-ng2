@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
@@ -30,8 +30,7 @@ export class OperationDialogComponent implements OnInit {
         private operationService: OperationService,
         private bankAccountService: BankAccountService,
         private labelService: LabelService,
-        private eventManager: EventManager,
-        private router: Router
+        private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['operation']);
     }
@@ -46,7 +45,6 @@ export class OperationDialogComponent implements OnInit {
     }
     clear () {
         this.activeModal.dismiss('cancel');
-        this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
     }
 
     save () {
@@ -64,7 +62,6 @@ export class OperationDialogComponent implements OnInit {
         this.eventManager.broadcast({ name: 'operationListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
-        this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
     }
 
     private onSaveError (error) {

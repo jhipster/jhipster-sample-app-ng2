@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, JhiLanguageService } from 'ng-jhipster';
@@ -20,15 +20,13 @@ export class OperationDeleteDialogComponent {
         private jhiLanguageService: JhiLanguageService,
         private operationService: OperationService,
         public activeModal: NgbActiveModal,
-        private eventManager: EventManager,
-        private router: Router
+        private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['operation']);
     }
 
     clear () {
         this.activeModal.dismiss('cancel');
-        this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
     }
 
     confirmDelete (id: number) {
@@ -37,7 +35,6 @@ export class OperationDeleteDialogComponent {
                 name: 'operationListModification',
                 content: 'Deleted an operation'
             });
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
             this.activeModal.dismiss(true);
         });
     }
