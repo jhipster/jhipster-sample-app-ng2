@@ -31,11 +31,9 @@ export class BankAccountPopupService {
         let modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.bankAccount = bankAccount;
         modalRef.result.then(result => {
-            console.log(`Closed with: ${result}`);
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
             this.isOpen = false;
         }, (reason) => {
-            console.log(`Dismissed ${reason}`);
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
             this.isOpen = false;
         });

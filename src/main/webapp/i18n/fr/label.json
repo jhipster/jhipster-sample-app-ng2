@@ -4,8 +4,7 @@
             "home": {
                 "title": "Labels",
                 "createLabel": "Créer un nouveau Label",
-                "createOrEditLabel": "Créer ou éditer un Label",
-                "search": "Recherche pour Label"
+                "createOrEditLabel": "Créer ou éditer un Label"
             },
             "created": "Un nouveau Label a été créé avec l'identifiant {{ param }}",
             "updated": "Le Label avec l'identifiant {{ param }} a été mis à jour",
