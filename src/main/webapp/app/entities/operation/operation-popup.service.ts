@@ -12,6 +12,7 @@ export class OperationPopupService {
         private modalService: NgbModal,
         private router: Router,
         private operationService: OperationService
+
     ) {}
 
     open (component: Component, id?: number | any): NgbModalRef {

@@ -19,7 +19,7 @@
         <dt><span jhiTranslate="jhipsterSampleApplicationNg2App.operation.bankAccount">Bank Account</span></dt>
         <dd>
             <div *ngIf="operation.bankAccount">
-                <a [routerLink]="['bank-account', operation.bankAccount?.id]">{{operation.bankAccount?.name}}</a>
+                <a [routerLink]="['/bank-account', operation.bankAccount?.id]">{{operation.bankAccount?.name}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="jhipsterSampleApplicationNg2App.operation.label">Label</span></dt>

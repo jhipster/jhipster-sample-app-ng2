@@ -10,6 +10,7 @@ export class BankAccountPopupService {
         private modalService: NgbModal,
         private router: Router,
         private bankAccountService: BankAccountService
+
     ) {}
 
     open (component: Component, id?: number | any): NgbModalRef {

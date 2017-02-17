@@ -10,6 +10,7 @@ export class LabelPopupService {
         private modalService: NgbModal,
         private router: Router,
         private labelService: LabelService
+
     ) {}
 
     open (component: Component, id?: number | any): NgbModalRef {

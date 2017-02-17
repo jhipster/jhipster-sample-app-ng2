@@ -63,6 +63,7 @@ describe('Component Tests', () => {
         describe('OnInit', () => {
             it('Should call load all on init', () => {
             // GIVEN
+
             spyOn(service, 'find').and.returnValue(Observable.of(new Label(10)));
 
             // WHEN
