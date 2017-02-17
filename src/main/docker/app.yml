@@ -2,11 +2,9 @@ version: '2'
 services:
     jhipstersampleapplicationng2-app:
         image: jhipstersampleapplicationng2
-        external_links:
-            - jhipstersampleapplicationng2-mysql:mysql
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
-            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/jhipstersampleapplicationng2?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - SPRING_DATASOURCE_URL=jdbc:mysql://jhipstersampleapplicationng2-mysql:3306/jhipstersampleapplicationng2?useUnicode=true&characterEncoding=utf8&useSSL=false
             - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
         ports:
             - 8080:8080

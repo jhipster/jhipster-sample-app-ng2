@@ -63,7 +63,7 @@
         </div>
         <div class="form-group">
             <label jhiTranslate="jhipsterSampleApplicationNg2App.operation.label" for="field_label">Label</label>
-            <select class="form-control" id="field_label" #label="ngModel" multiple name="label" [(ngModel)]="operation.labels">
+            <select class="form-control" id="field_label" multiple name="label" [(ngModel)]="operation.labels">
                 <option [ngValue]="getSelected(operation.labels, labelOption)" *ngFor="let labelOption of labels; trackBy: trackLabelById">{{labelOption.label}}</option>
             </select>
         </div>
