@@ -84,7 +84,7 @@ module.exports = function (config) {
         reporters: ['dots', 'junit', 'progress', 'coverage', 'karma-remap-istanbul'],
 
         junitReporter: {
-            outputFile: 'target/test-results/karma/TESTS-results.xml'
+            outputFile: '../../../../target/test-results/karma/TESTS-results.xml'
         },
 
         remapIstanbulReporter: {

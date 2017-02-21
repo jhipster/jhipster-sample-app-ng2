@@ -1,16 +1,15 @@
 <div>
-    <h2><span jhiTranslate="jhipsterSampleApplicationNg2App.operation.home.title">Operations</span>
-        <button class="btn btn-primary float-xs-right create-operation" [routerLink]="['/', { outlets: { popup: ['operation-new'] } }]">
+    <h2>
+        <span jhiTranslate="jhipsterSampleApplicationNg2App.operation.home.title">Operations</span>
+        <button class="btn btn-primary float-right create-operation" [routerLink]="['/', { outlets: { popup: ['operation-new'] } }]">
             <span class="fa fa-plus"></span>
             <span  jhiTranslate="jhipsterSampleApplicationNg2App.operation.home.createLabel">
             Create new Operation
             </span>
-        </button></h2>
+        </button>
+    </h2>
     <jhi-alert></jhi-alert>
-
-    <div class="container-fluid">
-        <div class="row">
-        </div>
+    <div class="row">
     </div>
     <br/>
     <div class="table-responsive" *ngIf="operations">
@@ -36,7 +35,7 @@
                         <a [routerLink]="['../bank-account', operation.bankAccount?.id ]" >{{operation.bankAccount?.name}}</a>
                     </div>
                 </td>
-                <td class="text-xs-right">
+                <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
                                 [routerLink]="['../operation', operation.id ]"

@@ -1,16 +1,15 @@
 <div>
-    <h2><span jhiTranslate="jhipsterSampleApplicationNg2App.label.home.title">Labels</span>
-        <button class="btn btn-primary float-xs-right create-label" [routerLink]="['/', { outlets: { popup: ['label-new'] } }]">
+    <h2>
+        <span jhiTranslate="jhipsterSampleApplicationNg2App.label.home.title">Labels</span>
+        <button class="btn btn-primary float-right create-label" [routerLink]="['/', { outlets: { popup: ['label-new'] } }]">
             <span class="fa fa-plus"></span>
             <span  jhiTranslate="jhipsterSampleApplicationNg2App.label.home.createLabel">
             Create new Label
             </span>
-        </button></h2>
+        </button>
+    </h2>
     <jhi-alert></jhi-alert>
-
-    <div class="container-fluid">
-        <div class="row">
-        </div>
+    <div class="row">
     </div>
     <br/>
     <div class="table-responsive" *ngIf="labels">
@@ -26,7 +25,7 @@
             <tr *ngFor="let label of labels ;trackBy: trackId">
                 <td><a [routerLink]="['../label', label.id ]">{{label.id}}</a></td>
                 <td>{{label.label}}</td>
-                <td class="text-xs-right">
+                <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
                                 [routerLink]="['../label', label.id ]"
