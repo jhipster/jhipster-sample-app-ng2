@@ -1,9 +1,6 @@
 import { ComponentFixture, TestBed, async, inject, tick, fakeAsync } from '@angular/core/testing';
-import { MockBackend } from '@angular/http/testing';
-import { Http, BaseRequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { JhiLanguageService } from 'ng-jhipster';
-import { MockLanguageService } from '../../../helpers/mock-language.service';
+import { JhipsterSampleApplicationNg2TestModule } from '../../../test.module';
 import { Session } from '../../../../../../main/webapp/app/account/sessions/session.model';
 import { SessionsComponent } from '../../../../../../main/webapp/app/account/sessions/sessions.component';
 import { SessionsService } from '../../../../../../main/webapp/app/account/sessions/sessions.service';
@@ -23,21 +20,10 @@ describe('Component Tests', () => {
             sessions = new Session('xxxxxx==', new Date(2015, 10, 15), '0:0:0:0:0:0:0:1', 'Mozilla/5.0');
 
             fixture = TestBed.configureTestingModule({
+                imports: [JhipsterSampleApplicationNg2TestModule],
                 declarations: [SessionsComponent],
-                providers: [MockBackend,
+                providers: [
                     SessionsService,
-                    BaseRequestOptions,
-                    {
-                        provide: Http,
-                        useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
-                            return new Http(backendInstance, defaultOptions);
-                        },
-                        deps: [MockBackend, BaseRequestOptions]
-                    },
-                    {
-                        provide: JhiLanguageService,
-                        useClass: MockLanguageService
-                    },
                     {
                         provide: Principal,
                         useClass: MockPrincipal

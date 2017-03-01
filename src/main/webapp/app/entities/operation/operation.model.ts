@@ -8,5 +8,6 @@ export class Operation {
         public amount?: number,
         public bankAccount?: BankAccount,
         public label?: Label,
-    ) { }
+    ) {
+    }
 }

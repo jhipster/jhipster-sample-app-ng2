@@ -4,5 +4,6 @@ export class Label {
         public id?: number,
         public label?: string,
         public operation?: Operation,
-    ) { }
+    ) {
+    }
 }

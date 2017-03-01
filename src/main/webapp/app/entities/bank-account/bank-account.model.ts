@@ -7,5 +7,6 @@ export class BankAccount {
         public balance?: number,
         public user?: User,
         public operation?: Operation,
-    ) { }
+    ) {
+    }
 }
