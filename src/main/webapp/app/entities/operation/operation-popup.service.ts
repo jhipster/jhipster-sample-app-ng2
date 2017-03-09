@@ -23,7 +23,8 @@ export class OperationPopupService {
 
         if (id) {
             this.operationService.find(id).subscribe(operation => {
-                operation.date = this.datePipe.transform(operation.date, 'yyyy-MM-ddThh:mm');
+                operation.date = this.datePipe
+                    .transform(operation.date, 'yyyy-MM-ddThh:mm');
                 this.operationModalRef(component, operation);
             });
         } else {

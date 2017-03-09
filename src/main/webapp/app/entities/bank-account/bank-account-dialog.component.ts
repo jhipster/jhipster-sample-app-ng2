@@ -51,10 +51,12 @@ export class BankAccountDialogComponent implements OnInit {
         this.isSaving = true;
         if (this.bankAccount.id !== undefined) {
             this.bankAccountService.update(this.bankAccount)
-                .subscribe((res: BankAccount) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
+                .subscribe((res: BankAccount) =>
+                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         } else {
             this.bankAccountService.create(this.bankAccount)
-                .subscribe((res: BankAccount) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
+                .subscribe((res: BankAccount) =>
+                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         }
     }
 

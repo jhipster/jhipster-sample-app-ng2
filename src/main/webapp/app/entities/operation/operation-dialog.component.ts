@@ -51,10 +51,12 @@ export class OperationDialogComponent implements OnInit {
         this.isSaving = true;
         if (this.operation.id !== undefined) {
             this.operationService.update(this.operation)
-                .subscribe((res: Operation) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
+                .subscribe((res: Operation) =>
+                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         } else {
             this.operationService.create(this.operation)
-                .subscribe((res: Operation) => this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
+                .subscribe((res: Operation) =>
+                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
         }
     }
 
