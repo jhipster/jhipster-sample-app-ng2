@@ -9,6 +9,7 @@ import { Label } from './label.model';
 import { LabelPopupService } from './label-popup.service';
 import { LabelService } from './label.service';
 import { Operation, OperationService } from '../operation';
+
 @Component({
     selector: 'jhi-label-dialog',
     templateUrl: './label-dialog.component.html'

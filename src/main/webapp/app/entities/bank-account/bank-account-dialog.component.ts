@@ -10,6 +10,7 @@ import { BankAccountPopupService } from './bank-account-popup.service';
 import { BankAccountService } from './bank-account.service';
 import { User, UserService } from '../../shared';
 import { Operation, OperationService } from '../operation';
+
 @Component({
     selector: 'jhi-bank-account-dialog',
     templateUrl: './bank-account-dialog.component.html'

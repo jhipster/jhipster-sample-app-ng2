@@ -10,6 +10,7 @@ import { OperationPopupService } from './operation-popup.service';
 import { OperationService } from './operation.service';
 import { BankAccount, BankAccountService } from '../bank-account';
 import { Label, LabelService } from '../label';
+
 @Component({
     selector: 'jhi-operation-dialog',
     templateUrl: './operation-dialog.component.html'
