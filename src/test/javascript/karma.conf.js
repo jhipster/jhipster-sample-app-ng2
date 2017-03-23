@@ -54,7 +54,7 @@ module.exports = function (config) {
                         loaders: ['file?name=[name].[hash].[ext]', 'extract']
                     },
                     {
-                        test: /src\/main\/webapp\/.+\.ts$/,
+                        test: /src[\/|\\]main[\/|\\]webapp[\/|\\].+\.ts$/,
                         enforce: 'post',
                         exclude: /(test|node_modules)/,
                         loader: 'sourcemap-istanbul-instrumenter-loader?force-sourcemap=true'
