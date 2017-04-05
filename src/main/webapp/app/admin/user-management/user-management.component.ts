@@ -61,7 +61,7 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
     }
 
     registerChangeInUsers() {
-        this.eventManager.subscribe('userListModification', (response) => this.loadAll());
+        this.eventManager.subscribe('userListModification', response => this.loadAll());
     }
 
     setActive (user, isActivated) {

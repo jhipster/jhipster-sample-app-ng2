@@ -53,11 +53,11 @@ export class OperationDialogComponent implements OnInit {
         if (this.operation.id !== undefined) {
             this.operationService.update(this.operation)
                 .subscribe((res: Operation) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
+                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
         } else {
             this.operationService.create(this.operation)
                 .subscribe((res: Operation) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
+                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
         }
     }
 
@@ -68,6 +68,11 @@ export class OperationDialogComponent implements OnInit {
     }
 
     private onSaveError (error) {
+        try {
+            error.json();
+        } catch (exception) {
+            error.message = error.text();
+        }
         this.isSaving = false;
         this.onError(error);
     }
@@ -119,7 +124,6 @@ export class OperationPopupComponent implements OnInit, OnDestroy {
                 this.modalRef = this.operationPopupService
                     .open(OperationDialogComponent);
             }
-
         });
     }
 

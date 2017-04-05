@@ -46,8 +46,6 @@ import {
     ],
     providers: [
         ProfileService,
-        { provide: Window, useValue: window },
-        { provide: Document, useValue: document },
         customHttpProvider(),
         PaginationConfig,
         UserRouteAccessService

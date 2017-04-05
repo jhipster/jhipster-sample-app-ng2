@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 const path = require('path');
 
 module.exports = function (options) {
@@ -88,9 +89,10 @@ module.exports = function (options) {
             }),
             new webpack.DllReferencePlugin({
                 context: './',
-                manifest: require(path.resolve('./target/www/vendor.json')),
+                manifest: require(path.resolve('./target/www/vendor.json'))
             }),
             new CopyWebpackPlugin([
+                { from: './node_modules/core-js/client/shim.min.js', to: 'core-js-shim.min.js' },
                 { from: './node_modules/swagger-ui/dist', to: 'swagger-ui/dist' },
                 { from: './src/main/webapp/swagger-ui/', to: 'swagger-ui' },
                 { from: './src/main/webapp/favicon.ico', to: 'favicon.ico' },
@@ -109,7 +111,11 @@ module.exports = function (options) {
             new AddAssetHtmlPlugin([
                 { filepath: path.resolve('./target/www/vendor.dll.js'), includeSourcemap: false }
             ]),
-            new StringReplacePlugin()
+            new StringReplacePlugin(),
+            new WebpackNotifierPlugin({
+                title: 'JHipster',
+                contentImage: path.join(__dirname, 'logo-jhipster.png')
+            })
         ]
     };
 };

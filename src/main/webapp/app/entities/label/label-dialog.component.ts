@@ -47,11 +47,11 @@ export class LabelDialogComponent implements OnInit {
         if (this.label.id !== undefined) {
             this.labelService.update(this.label)
                 .subscribe((res: Label) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
+                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
         } else {
             this.labelService.create(this.label)
                 .subscribe((res: Label) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
+                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
         }
     }
 
@@ -62,6 +62,11 @@ export class LabelDialogComponent implements OnInit {
     }
 
     private onSaveError (error) {
+        try {
+            error.json();
+        } catch (exception) {
+            error.message = error.text();
+        }
         this.isSaving = false;
         this.onError(error);
     }
@@ -109,7 +114,6 @@ export class LabelPopupComponent implements OnInit, OnDestroy {
                 this.modalRef = this.labelPopupService
                     .open(LabelDialogComponent);
             }
-
         });
     }
 

@@ -9,7 +9,6 @@ import { BankAccount } from './bank-account.model';
 import { BankAccountPopupService } from './bank-account-popup.service';
 import { BankAccountService } from './bank-account.service';
 import { User, UserService } from '../../shared';
-import { Operation, OperationService } from '../operation';
 
 @Component({
     selector: 'jhi-bank-account-dialog',
@@ -22,15 +21,12 @@ export class BankAccountDialogComponent implements OnInit {
     isSaving: boolean;
 
     users: User[];
-
-    operations: Operation[];
     constructor(
         public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private bankAccountService: BankAccountService,
         private userService: UserService,
-        private operationService: OperationService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['bankAccount']);
@@ -41,8 +37,6 @@ export class BankAccountDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.userService.query().subscribe(
             (res: Response) => { this.users = res.json(); }, (res: Response) => this.onError(res.json()));
-        this.operationService.query().subscribe(
-            (res: Response) => { this.operations = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear () {
         this.activeModal.dismiss('cancel');
@@ -53,11 +47,11 @@ export class BankAccountDialogComponent implements OnInit {
         if (this.bankAccount.id !== undefined) {
             this.bankAccountService.update(this.bankAccount)
                 .subscribe((res: BankAccount) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
+                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
         } else {
             this.bankAccountService.create(this.bankAccount)
                 .subscribe((res: BankAccount) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res.json()));
+                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
         }
     }
 
@@ -68,6 +62,11 @@ export class BankAccountDialogComponent implements OnInit {
     }
 
     private onSaveError (error) {
+        try {
+            error.json();
+        } catch (exception) {
+            error.message = error.text();
+        }
         this.isSaving = false;
         this.onError(error);
     }
@@ -77,10 +76,6 @@ export class BankAccountDialogComponent implements OnInit {
     }
 
     trackUserById(index: number, item: User) {
-        return item.id;
-    }
-
-    trackOperationById(index: number, item: Operation) {
         return item.id;
     }
 }
@@ -108,7 +103,6 @@ export class BankAccountPopupComponent implements OnInit, OnDestroy {
                 this.modalRef = this.bankAccountPopupService
                     .open(BankAccountDialogComponent);
             }
-
         });
     }
 

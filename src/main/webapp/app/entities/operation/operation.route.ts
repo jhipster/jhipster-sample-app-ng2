@@ -19,14 +19,16 @@ export const operationRoute: Routes = [
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
-    }
+    },
+    canActivate: [UserRouteAccessService]
   }, {
     path: 'operation/:id',
     component: OperationDetailComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
-    }
+    },
+    canActivate: [UserRouteAccessService]
   }
 ];
 
@@ -38,6 +40,7 @@ export const operationPopupRoute: Routes = [
         authorities: ['ROLE_USER'],
         pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
     },
+    canActivate: [UserRouteAccessService],
     outlet: 'popup'
   },
   {
@@ -47,6 +50,7 @@ export const operationPopupRoute: Routes = [
         authorities: ['ROLE_USER'],
         pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
     },
+    canActivate: [UserRouteAccessService],
     outlet: 'popup'
   },
   {
@@ -56,6 +60,7 @@ export const operationPopupRoute: Routes = [
         authorities: ['ROLE_USER'],
         pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
     },
+    canActivate: [UserRouteAccessService],
     outlet: 'popup'
   }
 ];

@@ -19,14 +19,16 @@ export const bankAccountRoute: Routes = [
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
-    }
+    },
+    canActivate: [UserRouteAccessService]
   }, {
     path: 'bank-account/:id',
     component: BankAccountDetailComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
-    }
+    },
+    canActivate: [UserRouteAccessService]
   }
 ];
 
@@ -38,6 +40,7 @@ export const bankAccountPopupRoute: Routes = [
         authorities: ['ROLE_USER'],
         pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
     },
+    canActivate: [UserRouteAccessService],
     outlet: 'popup'
   },
   {
@@ -47,6 +50,7 @@ export const bankAccountPopupRoute: Routes = [
         authorities: ['ROLE_USER'],
         pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
     },
+    canActivate: [UserRouteAccessService],
     outlet: 'popup'
   },
   {
@@ -56,6 +60,7 @@ export const bankAccountPopupRoute: Routes = [
         authorities: ['ROLE_USER'],
         pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
     },
+    canActivate: [UserRouteAccessService],
     outlet: 'popup'
   }
 ];
