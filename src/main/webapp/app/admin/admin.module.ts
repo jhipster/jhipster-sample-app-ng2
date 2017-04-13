@@ -29,7 +29,6 @@ import {
     UserModalService
 } from './';
 
-
 @NgModule({
     imports: [
         JhipsterSampleApplicationNg2SharedModule,

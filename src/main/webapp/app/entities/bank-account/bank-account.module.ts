@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 
 import { JhipsterSampleApplicationNg2SharedModule } from '../../shared';
 import { JhipsterSampleApplicationNg2AdminModule } from '../../admin/admin.module';
-
 import {
     BankAccountService,
     BankAccountPopupService,
@@ -17,7 +16,7 @@ import {
     bankAccountPopupRoute,
 } from './';
 
-let ENTITY_STATES = [
+const ENTITY_STATES = [
     ...bankAccountRoute,
     ...bankAccountPopupRoute,
 ];

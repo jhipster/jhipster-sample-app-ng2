@@ -2,7 +2,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { JhipsterSampleApplicationNg2SharedModule } from '../../shared';
-
 import {
     LabelService,
     LabelPopupService,
@@ -16,7 +15,7 @@ import {
     labelPopupRoute,
 } from './';
 
-let ENTITY_STATES = [
+const ENTITY_STATES = [
     ...labelRoute,
     ...labelPopupRoute,
 ];

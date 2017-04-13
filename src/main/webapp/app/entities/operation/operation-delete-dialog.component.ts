@@ -25,12 +25,12 @@ export class OperationDeleteDialogComponent {
         this.jhiLanguageService.setLocations(['operation']);
     }
 
-    clear () {
+    clear() {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete (id: number) {
-        this.operationService.delete(id).subscribe(response => {
+    confirmDelete(id: number) {
+        this.operationService.delete(id).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'operationListModification',
                 content: 'Deleted an operation'
@@ -49,13 +49,13 @@ export class OperationDeletePopupComponent implements OnInit, OnDestroy {
     modalRef: NgbModalRef;
     routeSub: any;
 
-    constructor (
+    constructor(
         private route: ActivatedRoute,
         private operationPopupService: OperationPopupService
     ) {}
 
     ngOnInit() {
-        this.routeSub = this.route.params.subscribe(params => {
+        this.routeSub = this.route.params.subscribe((params) => {
             this.modalRef = this.operationPopupService
                 .open(OperationDeleteDialogComponent, params['id']);
         });

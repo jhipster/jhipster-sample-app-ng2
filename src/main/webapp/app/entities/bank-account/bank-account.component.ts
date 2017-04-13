@@ -48,18 +48,14 @@ bankAccounts: BankAccount[];
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    trackId (index: number, item: BankAccount) {
+    trackId(index: number, item: BankAccount) {
         return item.id;
     }
-
-
-
     registerChangeInBankAccounts() {
         this.eventSubscriber = this.eventManager.subscribe('bankAccountListModification', (response) => this.loadAll());
     }
 
-
-    private onError (error) {
+    private onError(error) {
         this.alertService.error(error.message, null, null);
     }
 }

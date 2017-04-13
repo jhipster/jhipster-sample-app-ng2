@@ -11,7 +11,6 @@ import { OperationDeletePopupComponent } from './operation-delete-dialog.compone
 
 import { Principal } from '../../shared';
 
-
 export const operationRoute: Routes = [
   {
     path: 'operation',

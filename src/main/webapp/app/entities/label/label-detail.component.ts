@@ -26,14 +26,14 @@ export class LabelDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.subscription = this.route.params.subscribe(params => {
+        this.subscription = this.route.params.subscribe((params) => {
             this.load(params['id']);
         });
         this.registerChangeInLabels();
     }
 
-    load (id) {
-        this.labelService.find(id).subscribe(label => {
+    load(id) {
+        this.labelService.find(id).subscribe((label) => {
             this.label = label;
         });
     }
@@ -47,7 +47,6 @@ export class LabelDetailComponent implements OnInit, OnDestroy {
     }
 
     registerChangeInLabels() {
-        this.eventSubscriber = this.eventManager.subscribe('labelListModification', response => this.load(this.label.id));
+        this.eventSubscriber = this.eventManager.subscribe('labelListModification', (response) => this.load(this.label.id));
     }
-
 }

@@ -25,12 +25,12 @@ export class LabelDeleteDialogComponent {
         this.jhiLanguageService.setLocations(['label']);
     }
 
-    clear () {
+    clear() {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete (id: number) {
-        this.labelService.delete(id).subscribe(response => {
+    confirmDelete(id: number) {
+        this.labelService.delete(id).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'labelListModification',
                 content: 'Deleted an label'
@@ -49,13 +49,13 @@ export class LabelDeletePopupComponent implements OnInit, OnDestroy {
     modalRef: NgbModalRef;
     routeSub: any;
 
-    constructor (
+    constructor(
         private route: ActivatedRoute,
         private labelPopupService: LabelPopupService
     ) {}
 
     ngOnInit() {
-        this.routeSub = this.route.params.subscribe(params => {
+        this.routeSub = this.route.params.subscribe((params) => {
             this.modalRef = this.labelPopupService
                 .open(LabelDeleteDialogComponent, params['id']);
         });

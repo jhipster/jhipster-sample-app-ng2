@@ -48,18 +48,14 @@ labels: Label[];
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    trackId (index: number, item: Label) {
+    trackId(index: number, item: Label) {
         return item.id;
     }
-
-
-
     registerChangeInLabels() {
         this.eventSubscriber = this.eventManager.subscribe('labelListModification', (response) => this.loadAll());
     }
 
-
-    private onError (error) {
+    private onError(error) {
         this.alertService.error(error.message, null, null);
     }
 }

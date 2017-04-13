@@ -25,12 +25,12 @@ export class BankAccountDeleteDialogComponent {
         this.jhiLanguageService.setLocations(['bankAccount']);
     }
 
-    clear () {
+    clear() {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete (id: number) {
-        this.bankAccountService.delete(id).subscribe(response => {
+    confirmDelete(id: number) {
+        this.bankAccountService.delete(id).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'bankAccountListModification',
                 content: 'Deleted an bankAccount'
@@ -49,13 +49,13 @@ export class BankAccountDeletePopupComponent implements OnInit, OnDestroy {
     modalRef: NgbModalRef;
     routeSub: any;
 
-    constructor (
+    constructor(
         private route: ActivatedRoute,
         private bankAccountPopupService: BankAccountPopupService
     ) {}
 
     ngOnInit() {
-        this.routeSub = this.route.params.subscribe(params => {
+        this.routeSub = this.route.params.subscribe((params) => {
             this.modalRef = this.bankAccountPopupService
                 .open(BankAccountDeleteDialogComponent, params['id']);
         });

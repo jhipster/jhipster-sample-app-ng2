@@ -11,7 +11,6 @@ import { LabelDeletePopupComponent } from './label-delete-dialog.component';
 
 import { Principal } from '../../shared';
 
-
 export const labelRoute: Routes = [
   {
     path: 'label',

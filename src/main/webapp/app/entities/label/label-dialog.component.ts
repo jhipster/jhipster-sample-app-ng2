@@ -38,11 +38,11 @@ export class LabelDialogComponent implements OnInit {
         this.operationService.query().subscribe(
             (res: Response) => { this.operations = res.json(); }, (res: Response) => this.onError(res.json()));
     }
-    clear () {
+    clear() {
         this.activeModal.dismiss('cancel');
     }
 
-    save () {
+    save() {
         this.isSaving = true;
         if (this.label.id !== undefined) {
             this.labelService.update(this.label)
@@ -55,13 +55,13 @@ export class LabelDialogComponent implements OnInit {
         }
     }
 
-    private onSaveSuccess (result: Label) {
+    private onSaveSuccess(result: Label) {
         this.eventManager.broadcast({ name: 'labelListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
 
-    private onSaveError (error) {
+    private onSaveError(error) {
         try {
             error.json();
         } catch (exception) {
@@ -71,7 +71,7 @@ export class LabelDialogComponent implements OnInit {
         this.onError(error);
     }
 
-    private onError (error) {
+    private onError(error) {
         this.alertService.error(error.message, null, null);
     }
 
@@ -100,13 +100,13 @@ export class LabelPopupComponent implements OnInit, OnDestroy {
     modalRef: NgbModalRef;
     routeSub: any;
 
-    constructor (
+    constructor(
         private route: ActivatedRoute,
         private labelPopupService: LabelPopupService
     ) {}
 
     ngOnInit() {
-        this.routeSub = this.route.params.subscribe(params => {
+        this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
                 this.modalRef = this.labelPopupService
                     .open(LabelDialogComponent, params['id']);

@@ -6,21 +6,21 @@ import { BankAccountService } from './bank-account.service';
 @Injectable()
 export class BankAccountPopupService {
     private isOpen = false;
-    constructor (
+    constructor(
         private modalService: NgbModal,
         private router: Router,
         private bankAccountService: BankAccountService
 
     ) {}
 
-    open (component: Component, id?: number | any): NgbModalRef {
+    open(component: Component, id?: number | any): NgbModalRef {
         if (this.isOpen) {
             return;
         }
         this.isOpen = true;
 
         if (id) {
-            this.bankAccountService.find(id).subscribe(bankAccount => {
+            this.bankAccountService.find(id).subscribe((bankAccount) => {
                 this.bankAccountModalRef(component, bankAccount);
             });
         } else {
@@ -29,9 +29,9 @@ export class BankAccountPopupService {
     }
 
     bankAccountModalRef(component: Component, bankAccount: BankAccount): NgbModalRef {
-        let modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
+        const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.bankAccount = bankAccount;
-        modalRef.result.then(result => {
+        modalRef.result.then((result) => {
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
             this.isOpen = false;
         }, (reason) => {

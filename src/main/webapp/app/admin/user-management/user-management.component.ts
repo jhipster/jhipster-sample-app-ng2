@@ -39,7 +39,7 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
         private router: Router
     ) {
         this.itemsPerPage = ITEMS_PER_PAGE;
-        this.routeData = this.activatedRoute.data.subscribe(data => {
+        this.routeData = this.activatedRoute.data.subscribe((data) => {
             this.page = data['pagingParams'].page;
             this.previousPage = data['pagingParams'].page;
             this.reverse = data['pagingParams'].ascending;
@@ -61,14 +61,14 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
     }
 
     registerChangeInUsers() {
-        this.eventManager.subscribe('userListModification', response => this.loadAll());
+        this.eventManager.subscribe('userListModification', (response) => this.loadAll());
     }
 
-    setActive (user, isActivated) {
+    setActive(user, isActivated) {
         user.activated = isActivated;
 
         this.userService.update(user).subscribe(
-            response => {
+            (response) => {
                 if (response.status === 200) {
                     this.error = null;
                     this.success = 'OK';
@@ -80,7 +80,7 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
             });
     }
 
-    loadAll () {
+    loadAll() {
         this.userService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
@@ -90,26 +90,26 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
         );
     }
 
-    trackIdentity (index, item: User) {
+    trackIdentity(index, item: User) {
         return item.id;
     }
 
-    sort () {
-        let result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
+    sort() {
+        const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
         if (this.predicate !== 'id') {
             result.push('id');
         }
         return result;
     }
 
-    loadPage (page: number) {
+    loadPage(page: number) {
         if (page !== this.previousPage) {
             this.previousPage = page;
             this.transition();
         }
     }
 
-    transition () {
+    transition() {
         this.router.navigate(['/user-management'], { queryParams:
                 {
                     page: this.page,

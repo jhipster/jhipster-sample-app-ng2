@@ -18,21 +18,19 @@ export class AuthExpiredInterceptor extends HttpInterceptor {
         return options;
     }
     responseIntercept(observable: Observable<Response>): Observable<Response> {
-        let self = this;
-
         return <Observable<Response>> observable.catch((error) => {
             if (error.status === 401 && error.text() !== '' && error.json().path && error.json().path.indexOf('/api/account') === -1) {
-                let authServerProvider = self.injector.get(AuthServerProvider);
-                let destination = this.stateStorageService.getDestinationState();
-                let to = destination.destination;
-                let toParams = destination.params;
+                const authServerProvider = this.injector.get(AuthServerProvider);
+                const destination = this.stateStorageService.getDestinationState();
+                const to = destination.destination;
+                const toParams = destination.params;
                 authServerProvider.logout();
 
                 if (to.name === 'accessdenied') {
-                    self.stateStorageService.storePreviousState(to.name, toParams);
+                    this.stateStorageService.storePreviousState(to.name, toParams);
                 }
 
-                let loginServiceModal = self.injector.get(LoginModalService);
+                const loginServiceModal = this.injector.get(LoginModalService);
                 loginServiceModal.open();
 
             }

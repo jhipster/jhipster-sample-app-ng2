@@ -26,14 +26,14 @@ export class OperationDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.subscription = this.route.params.subscribe(params => {
+        this.subscription = this.route.params.subscribe((params) => {
             this.load(params['id']);
         });
         this.registerChangeInOperations();
     }
 
-    load (id) {
-        this.operationService.find(id).subscribe(operation => {
+    load(id) {
+        this.operationService.find(id).subscribe((operation) => {
             this.operation = operation;
         });
     }
@@ -47,7 +47,6 @@ export class OperationDetailComponent implements OnInit, OnDestroy {
     }
 
     registerChangeInOperations() {
-        this.eventSubscriber = this.eventManager.subscribe('operationListModification', response => this.load(this.operation.id));
+        this.eventSubscriber = this.eventManager.subscribe('operationListModification', (response) => this.load(this.operation.id));
     }
-
 }

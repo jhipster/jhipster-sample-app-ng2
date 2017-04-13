@@ -44,11 +44,11 @@ export class OperationDialogComponent implements OnInit {
         this.labelService.query().subscribe(
             (res: Response) => { this.labels = res.json(); }, (res: Response) => this.onError(res.json()));
     }
-    clear () {
+    clear() {
         this.activeModal.dismiss('cancel');
     }
 
-    save () {
+    save() {
         this.isSaving = true;
         if (this.operation.id !== undefined) {
             this.operationService.update(this.operation)
@@ -61,13 +61,13 @@ export class OperationDialogComponent implements OnInit {
         }
     }
 
-    private onSaveSuccess (result: Operation) {
+    private onSaveSuccess(result: Operation) {
         this.eventManager.broadcast({ name: 'operationListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
 
-    private onSaveError (error) {
+    private onSaveError(error) {
         try {
             error.json();
         } catch (exception) {
@@ -77,7 +77,7 @@ export class OperationDialogComponent implements OnInit {
         this.onError(error);
     }
 
-    private onError (error) {
+    private onError(error) {
         this.alertService.error(error.message, null, null);
     }
 
@@ -110,13 +110,13 @@ export class OperationPopupComponent implements OnInit, OnDestroy {
     modalRef: NgbModalRef;
     routeSub: any;
 
-    constructor (
+    constructor(
         private route: ActivatedRoute,
         private operationPopupService: OperationPopupService
     ) {}
 
     ngOnInit() {
-        this.routeSub = this.route.params.subscribe(params => {
+        this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
                 this.modalRef = this.operationPopupService
                     .open(OperationDialogComponent, params['id']);

@@ -16,20 +16,28 @@ export class UserRouteAccessService implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> {
-        return this.checkLogin(route.data['authorities'], state.url);
+
+        const authorities = route.data['authorities'];
+        if (!authorities || authorities.length === 0) {
+            return true;
+        }
+
+        return this.checkLogin(authorities, state.url);
     }
 
     checkLogin(authorities: string[], url: string): Promise<boolean> {
-        return Promise.resolve(this.principal.hasAnyAuthority(authorities).then(isOk => {
-            if (isOk) {
+        const principal = this.principal;
+        return Promise.resolve(principal.identity().then((account) => {
+
+            if (account && principal.hasAnyAuthority(authorities)) {
                 return true;
-            } else {
-                this.stateStorageService.storeUrl(url);
-                this.router.navigate(['accessdenied']).then(() => {
-                    this.loginModalService.open();
-                });
-                return false;
             }
+
+            this.stateStorageService.storeUrl(url);
+            this.router.navigate(['accessdenied']).then(() => {
+                this.loginModalService.open();
+            });
+            return false;
         }));
     }
 }

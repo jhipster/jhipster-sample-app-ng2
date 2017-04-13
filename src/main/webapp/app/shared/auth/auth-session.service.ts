@@ -9,20 +9,18 @@ export class AuthServerProvider {
         private http: Http
     ) {}
 
-    login (credentials): Observable<any> {
-        let data = 'j_username=' + encodeURIComponent(credentials.username) +
+    login(credentials): Observable<any> {
+        const data = 'j_username=' + encodeURIComponent(credentials.username) +
             '&j_password=' + encodeURIComponent(credentials.password) +
             '&remember-me=' + credentials.rememberMe + '&submit=Login';
-        let headers = new Headers ({
+        const headers = new Headers ({
             'Content-Type': 'application/x-www-form-urlencoded'
         });
 
-        return this.http.post('api/authentication', data, {
-            headers: headers
-        });
+        return this.http.post('api/authentication', data, { headers });
     }
 
-    logout (): Observable<any> {
+    logout(): Observable<any> {
         // logout from the server
         return this.http.post('api/logout', {}).map((response: Response) => {
             // to get a new csrf token call the api

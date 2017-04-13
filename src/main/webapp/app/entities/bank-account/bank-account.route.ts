@@ -11,7 +11,6 @@ import { BankAccountDeletePopupComponent } from './bank-account-delete-dialog.co
 
 import { Principal } from '../../shared';
 
-
 export const bankAccountRoute: Routes = [
   {
     path: 'bank-account',

@@ -45,7 +45,7 @@ export class OperationComponent implements OnInit, OnDestroy {
         this.jhiLanguageService.setLocations(['operation']);
     }
 
-    loadAll () {
+    loadAll() {
         this.operationService.query({
             page: this.page,
             size: this.itemsPerPage,
@@ -56,7 +56,7 @@ export class OperationComponent implements OnInit, OnDestroy {
         );
     }
 
-    reset () {
+    reset() {
         this.page = 0;
         this.operations = [];
         this.loadAll();
@@ -78,18 +78,15 @@ export class OperationComponent implements OnInit, OnDestroy {
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    trackId (index: number, item: Operation) {
+    trackId(index: number, item: Operation) {
         return item.id;
     }
-
-
-
     registerChangeInOperations() {
         this.eventSubscriber = this.eventManager.subscribe('operationListModification', (response) => this.reset());
     }
 
-    sort () {
-        let result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
+    sort() {
+        const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
         if (this.predicate !== 'id') {
             result.push('id');
         }
@@ -104,7 +101,7 @@ export class OperationComponent implements OnInit, OnDestroy {
         }
     }
 
-    private onError (error) {
+    private onError(error) {
         this.alertService.error(error.message, null, null);
     }
 }

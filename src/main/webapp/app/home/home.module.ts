@@ -5,7 +5,6 @@ import { JhipsterSampleApplicationNg2SharedModule } from '../shared';
 
 import { HOME_ROUTE, HomeComponent } from './';
 
-
 @NgModule({
     imports: [
         JhipsterSampleApplicationNg2SharedModule,
