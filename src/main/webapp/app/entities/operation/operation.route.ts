@@ -12,54 +12,54 @@ import { OperationDeletePopupComponent } from './operation-delete-dialog.compone
 import { Principal } from '../../shared';
 
 export const operationRoute: Routes = [
-  {
-    path: 'operation',
-    component: OperationComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
-    },
-    canActivate: [UserRouteAccessService]
-  }, {
-    path: 'operation/:id',
-    component: OperationDetailComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
-    },
-    canActivate: [UserRouteAccessService]
-  }
+    {
+        path: 'operation',
+        component: OperationComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    }, {
+        path: 'operation/:id',
+        component: OperationDetailComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    }
 ];
 
 export const operationPopupRoute: Routes = [
-  {
-    path: 'operation-new',
-    component: OperationPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
+    {
+        path: 'operation-new',
+        component: OperationPopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
     },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
-  {
-    path: 'operation/:id/edit',
-    component: OperationPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
+    {
+        path: 'operation/:id/edit',
+        component: OperationPopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
     },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
-  {
-    path: 'operation/:id/delete',
-    component: OperationDeletePopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  }
+    {
+        path: 'operation/:id/delete',
+        component: OperationDeletePopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'jhipsterSampleApplicationNg2App.operation.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    }
 ];

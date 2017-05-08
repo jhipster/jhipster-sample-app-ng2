@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { EventManager , JhiLanguageService  } from 'ng-jhipster';
+import { EventManager  } from 'ng-jhipster';
 
 import { Label } from './label.model';
 import { LabelService } from './label.service';
@@ -13,16 +13,14 @@ import { LabelService } from './label.service';
 export class LabelDetailComponent implements OnInit, OnDestroy {
 
     label: Label;
-    private subscription: any;
+    private subscription: Subscription;
     private eventSubscriber: Subscription;
 
     constructor(
         private eventManager: EventManager,
-        private jhiLanguageService: JhiLanguageService,
         private labelService: LabelService,
         private route: ActivatedRoute
     ) {
-        this.jhiLanguageService.setLocations(['label']);
     }
 
     ngOnInit() {
@@ -47,6 +45,9 @@ export class LabelDetailComponent implements OnInit, OnDestroy {
     }
 
     registerChangeInLabels() {
-        this.eventSubscriber = this.eventManager.subscribe('labelListModification', (response) => this.load(this.label.id));
+        this.eventSubscriber = this.eventManager.subscribe(
+            'labelListModification',
+            (response) => this.load(this.label.id)
+        );
     }
 }

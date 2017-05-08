@@ -19,13 +19,11 @@ bankAccounts: BankAccount[];
     eventSubscriber: Subscription;
 
     constructor(
-        private jhiLanguageService: JhiLanguageService,
         private bankAccountService: BankAccountService,
         private alertService: AlertService,
         private eventManager: EventManager,
         private principal: Principal
     ) {
-        this.jhiLanguageService.setLocations(['bankAccount']);
     }
 
     loadAll() {

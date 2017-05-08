@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { EventManager , JhiLanguageService  } from 'ng-jhipster';
+import { EventManager  } from 'ng-jhipster';
 
 import { BankAccount } from './bank-account.model';
 import { BankAccountService } from './bank-account.service';
@@ -13,16 +13,14 @@ import { BankAccountService } from './bank-account.service';
 export class BankAccountDetailComponent implements OnInit, OnDestroy {
 
     bankAccount: BankAccount;
-    private subscription: any;
+    private subscription: Subscription;
     private eventSubscriber: Subscription;
 
     constructor(
         private eventManager: EventManager,
-        private jhiLanguageService: JhiLanguageService,
         private bankAccountService: BankAccountService,
         private route: ActivatedRoute
     ) {
-        this.jhiLanguageService.setLocations(['bankAccount']);
     }
 
     ngOnInit() {
@@ -47,6 +45,9 @@ export class BankAccountDetailComponent implements OnInit, OnDestroy {
     }
 
     registerChangeInBankAccounts() {
-        this.eventSubscriber = this.eventManager.subscribe('bankAccountListModification', (response) => this.load(this.bankAccount.id));
+        this.eventSubscriber = this.eventManager.subscribe(
+            'bankAccountListModification',
+            (response) => this.load(this.bankAccount.id)
+        );
     }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { EventManager , JhiLanguageService  } from 'ng-jhipster';
+import { EventManager  } from 'ng-jhipster';
 
 import { Operation } from './operation.model';
 import { OperationService } from './operation.service';
@@ -13,16 +13,14 @@ import { OperationService } from './operation.service';
 export class OperationDetailComponent implements OnInit, OnDestroy {
 
     operation: Operation;
-    private subscription: any;
+    private subscription: Subscription;
     private eventSubscriber: Subscription;
 
     constructor(
         private eventManager: EventManager,
-        private jhiLanguageService: JhiLanguageService,
         private operationService: OperationService,
         private route: ActivatedRoute
     ) {
-        this.jhiLanguageService.setLocations(['operation']);
     }
 
     ngOnInit() {
@@ -47,6 +45,9 @@ export class OperationDetailComponent implements OnInit, OnDestroy {
     }
 
     registerChangeInOperations() {
-        this.eventSubscriber = this.eventManager.subscribe('operationListModification', (response) => this.load(this.operation.id));
+        this.eventSubscriber = this.eventManager.subscribe(
+            'operationListModification',
+            (response) => this.load(this.operation.id)
+        );
     }
 }

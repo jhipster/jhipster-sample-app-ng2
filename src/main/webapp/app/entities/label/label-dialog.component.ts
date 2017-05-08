@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
+import { Observable } from 'rxjs/Rx';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
+import { EventManager, AlertService } from 'ng-jhipster';
 
 import { Label } from './label.model';
 import { LabelPopupService } from './label-popup.service';
@@ -21,15 +22,14 @@ export class LabelDialogComponent implements OnInit {
     isSaving: boolean;
 
     operations: Operation[];
+
     constructor(
         public activeModal: NgbActiveModal,
-        private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private labelService: LabelService,
         private operationService: OperationService,
         private eventManager: EventManager
     ) {
-        this.jhiLanguageService.setLocations(['label']);
     }
 
     ngOnInit() {
@@ -45,14 +45,17 @@ export class LabelDialogComponent implements OnInit {
     save() {
         this.isSaving = true;
         if (this.label.id !== undefined) {
-            this.labelService.update(this.label)
-                .subscribe((res: Label) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
+            this.subscribeToSaveResponse(
+                this.labelService.update(this.label));
         } else {
-            this.labelService.create(this.label)
-                .subscribe((res: Label) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
+            this.subscribeToSaveResponse(
+                this.labelService.create(this.label));
         }
+    }
+
+    private subscribeToSaveResponse(result: Observable<Label>) {
+        result.subscribe((res: Label) =>
+            this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
     }
 
     private onSaveSuccess(result: Label) {

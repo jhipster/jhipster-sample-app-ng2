@@ -3,6 +3,7 @@ import { Http, Response, URLSearchParams, BaseRequestOptions } from '@angular/ht
 import { Observable } from 'rxjs/Rx';
 
 import { BankAccount } from './bank-account.model';
+
 @Injectable()
 export class BankAccountService {
 
@@ -11,14 +12,14 @@ export class BankAccountService {
     constructor(private http: Http) { }
 
     create(bankAccount: BankAccount): Observable<BankAccount> {
-        const copy: BankAccount = Object.assign({}, bankAccount);
+        const copy = this.convert(bankAccount);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
     }
 
     update(bankAccount: BankAccount): Observable<BankAccount> {
-        const copy: BankAccount = Object.assign({}, bankAccount);
+        const copy = this.convert(bankAccount);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -53,5 +54,10 @@ export class BankAccountService {
             options.search = params;
         }
         return options;
+    }
+
+    private convert(bankAccount: BankAccount): BankAccount {
+        const copy: BankAccount = Object.assign({}, bankAccount);
+        return copy;
     }
 }

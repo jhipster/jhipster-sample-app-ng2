@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Rx';
 
 import { Operation } from './operation.model';
 import { DateUtils } from 'ng-jhipster';
+
 @Injectable()
 export class OperationService {
 
@@ -12,17 +13,14 @@ export class OperationService {
     constructor(private http: Http, private dateUtils: DateUtils) { }
 
     create(operation: Operation): Observable<Operation> {
-        const copy: Operation = Object.assign({}, operation);
-        copy.date = this.dateUtils.toDate(operation.date);
+        const copy = this.convert(operation);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
     }
 
     update(operation: Operation): Observable<Operation> {
-        const copy: Operation = Object.assign({}, operation);
-
-        copy.date = this.dateUtils.toDate(operation.date);
+        const copy = this.convert(operation);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -40,7 +38,7 @@ export class OperationService {
     query(req?: any): Observable<Response> {
         const options = this.createRequestOption(req);
         return this.http.get(this.resourceUrl, options)
-            .map((res: any) => this.convertResponse(res))
+            .map((res: Response) => this.convertResponse(res))
         ;
     }
 
@@ -48,13 +46,13 @@ export class OperationService {
         return this.http.delete(`${this.resourceUrl}/${id}`);
     }
 
-    private convertResponse(res: any): any {
+    private convertResponse(res: Response): Response {
         const jsonResponse = res.json();
         for (let i = 0; i < jsonResponse.length; i++) {
             jsonResponse[i].date = this.dateUtils
                 .convertDateTimeFromServer(jsonResponse[i].date);
         }
-        res._body = jsonResponse;
+        res.json().data = jsonResponse;
         return res;
     }
 
@@ -72,5 +70,12 @@ export class OperationService {
             options.search = params;
         }
         return options;
+    }
+
+    private convert(operation: Operation): Operation {
+        const copy: Operation = Object.assign({}, operation);
+
+        copy.date = this.dateUtils.toDate(operation.date);
+        return copy;
     }
 }

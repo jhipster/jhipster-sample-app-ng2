@@ -27,7 +27,6 @@ export class OperationComponent implements OnInit, OnDestroy {
     totalItems: number;
 
     constructor(
-        private jhiLanguageService: JhiLanguageService,
         private operationService: OperationService,
         private alertService: AlertService,
         private eventManager: EventManager,
@@ -42,7 +41,6 @@ export class OperationComponent implements OnInit, OnDestroy {
         };
         this.predicate = 'id';
         this.reverse = true;
-        this.jhiLanguageService.setLocations(['operation']);
     }
 
     loadAll() {

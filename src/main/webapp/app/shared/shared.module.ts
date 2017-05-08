@@ -6,7 +6,6 @@ import {
     JhipsterSampleApplicationNg2SharedLibsModule,
     JhipsterSampleApplicationNg2SharedCommonModule,
     CSRFService,
-    AuthService,
     AuthServerProvider,
     AccountService,
     UserService,
@@ -36,7 +35,6 @@ import {
         Principal,
         CSRFService,
         AuthServerProvider,
-        AuthService,
         UserService,
         DatePipe
     ],

@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
+import { Observable } from 'rxjs/Rx';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
+import { EventManager, AlertService } from 'ng-jhipster';
 
 import { BankAccount } from './bank-account.model';
 import { BankAccountPopupService } from './bank-account-popup.service';
@@ -21,15 +22,14 @@ export class BankAccountDialogComponent implements OnInit {
     isSaving: boolean;
 
     users: User[];
+
     constructor(
         public activeModal: NgbActiveModal,
-        private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private bankAccountService: BankAccountService,
         private userService: UserService,
         private eventManager: EventManager
     ) {
-        this.jhiLanguageService.setLocations(['bankAccount']);
     }
 
     ngOnInit() {
@@ -45,14 +45,17 @@ export class BankAccountDialogComponent implements OnInit {
     save() {
         this.isSaving = true;
         if (this.bankAccount.id !== undefined) {
-            this.bankAccountService.update(this.bankAccount)
-                .subscribe((res: BankAccount) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
+            this.subscribeToSaveResponse(
+                this.bankAccountService.update(this.bankAccount));
         } else {
-            this.bankAccountService.create(this.bankAccount)
-                .subscribe((res: BankAccount) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
+            this.subscribeToSaveResponse(
+                this.bankAccountService.create(this.bankAccount));
         }
+    }
+
+    private subscribeToSaveResponse(result: Observable<BankAccount>) {
+        result.subscribe((res: BankAccount) =>
+            this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
     }
 
     private onSaveSuccess(result: BankAccount) {

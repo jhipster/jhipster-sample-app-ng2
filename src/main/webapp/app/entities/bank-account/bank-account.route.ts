@@ -12,54 +12,54 @@ import { BankAccountDeletePopupComponent } from './bank-account-delete-dialog.co
 import { Principal } from '../../shared';
 
 export const bankAccountRoute: Routes = [
-  {
-    path: 'bank-account',
-    component: BankAccountComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
-    },
-    canActivate: [UserRouteAccessService]
-  }, {
-    path: 'bank-account/:id',
-    component: BankAccountDetailComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
-    },
-    canActivate: [UserRouteAccessService]
-  }
+    {
+        path: 'bank-account',
+        component: BankAccountComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    }, {
+        path: 'bank-account/:id',
+        component: BankAccountDetailComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    }
 ];
 
 export const bankAccountPopupRoute: Routes = [
-  {
-    path: 'bank-account-new',
-    component: BankAccountPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
+    {
+        path: 'bank-account-new',
+        component: BankAccountPopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
     },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
-  {
-    path: 'bank-account/:id/edit',
-    component: BankAccountPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
+    {
+        path: 'bank-account/:id/edit',
+        component: BankAccountPopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
     },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
-  {
-    path: 'bank-account/:id/delete',
-    component: BankAccountDeletePopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  }
+    {
+        path: 'bank-account/:id/delete',
+        component: BankAccountDeletePopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'jhipsterSampleApplicationNg2App.bankAccount.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    }
 ];

@@ -3,6 +3,7 @@ import { Http, Response, URLSearchParams, BaseRequestOptions } from '@angular/ht
 import { Observable } from 'rxjs/Rx';
 
 import { Label } from './label.model';
+
 @Injectable()
 export class LabelService {
 
@@ -11,14 +12,14 @@ export class LabelService {
     constructor(private http: Http) { }
 
     create(label: Label): Observable<Label> {
-        const copy: Label = Object.assign({}, label);
+        const copy = this.convert(label);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
     }
 
     update(label: Label): Observable<Label> {
-        const copy: Label = Object.assign({}, label);
+        const copy = this.convert(label);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -53,5 +54,10 @@ export class LabelService {
             options.search = params;
         }
         return options;
+    }
+
+    private convert(label: Label): Label {
+        const copy: Label = Object.assign({}, label);
+        return copy;
     }
 }
