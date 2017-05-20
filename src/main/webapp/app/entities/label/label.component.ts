@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Response } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { EventManager, ParseLinks, PaginationUtil, JhiLanguageService, AlertService } from 'ng-jhipster';
 
 import { Label } from './label.model';
 import { LabelService } from './label.service';
-import { ITEMS_PER_PAGE, Principal } from '../../shared';
+import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
 import { PaginationConfig } from '../../blocks/config/uib-pagination.config';
 
 @Component({
@@ -28,10 +27,10 @@ labels: Label[];
 
     loadAll() {
         this.labelService.query().subscribe(
-            (res: Response) => {
-                this.labels = res.json();
+            (res: ResponseWrapper) => {
+                this.labels = res.json;
             },
-            (res: Response) => this.onError(res.json())
+            (res: ResponseWrapper) => this.onError(res.json)
         );
     }
     ngOnInit() {

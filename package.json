@@ -49,7 +49,7 @@
     "exports-loader": "0.6.4",
     "extract-text-webpack-plugin": "2.1.0",
     "file-loader": "0.11.1",
-    "generator-jhipster": "4.4.1",
+    "generator-jhipster": "4.5.0",
     "html-loader": "0.4.5",
     "html-webpack-plugin": "2.28.0",
     "jasmine-core": "2.5.2",
@@ -110,7 +110,7 @@
     "webpack:test": "yarn run ngc && yarn run test",
     "webpack:prod": "yarn run ngc && webpack -p --config webpack/webpack.vendor.js && webpack -p --config webpack/webpack.prod.js",
     "test": "yarn run lint && karma start src/test/javascript/karma.conf.js",
-    "test:watch": "karma start --watch",
+    "test:watch": "karma start src/test/javascript/karma.conf.js --watch",
     "e2e": "protractor src/test/javascript/protractor.conf.js",
     "postinstall": "webdriver-manager update && node node_modules/phantomjs-prebuilt/install.js && yarn run webpack:build"
   }

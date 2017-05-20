@@ -10,6 +10,7 @@ import { Label } from './label.model';
 import { LabelPopupService } from './label-popup.service';
 import { LabelService } from './label.service';
 import { Operation, OperationService } from '../operation';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-label-dialog',
@@ -35,8 +36,8 @@ export class LabelDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
-        this.operationService.query().subscribe(
-            (res: Response) => { this.operations = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.operationService.query()
+            .subscribe((res: ResponseWrapper) => { this.operations = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
     clear() {
         this.activeModal.dismiss('cancel');

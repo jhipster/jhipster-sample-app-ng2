@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Response } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { EventManager, ParseLinks, PaginationUtil, JhiLanguageService, AlertService } from 'ng-jhipster';
 
 import { BankAccount } from './bank-account.model';
 import { BankAccountService } from './bank-account.service';
-import { ITEMS_PER_PAGE, Principal } from '../../shared';
+import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
 import { PaginationConfig } from '../../blocks/config/uib-pagination.config';
 
 @Component({
@@ -28,10 +27,10 @@ bankAccounts: BankAccount[];
 
     loadAll() {
         this.bankAccountService.query().subscribe(
-            (res: Response) => {
-                this.bankAccounts = res.json();
+            (res: ResponseWrapper) => {
+                this.bankAccounts = res.json;
             },
-            (res: Response) => this.onError(res.json())
+            (res: ResponseWrapper) => this.onError(res.json)
         );
     }
     ngOnInit() {

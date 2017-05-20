@@ -11,6 +11,7 @@ import { OperationPopupService } from './operation-popup.service';
 import { OperationService } from './operation.service';
 import { BankAccount, BankAccountService } from '../bank-account';
 import { Label, LabelService } from '../label';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-operation-dialog',
@@ -39,10 +40,10 @@ export class OperationDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
-        this.bankAccountService.query().subscribe(
-            (res: Response) => { this.bankaccounts = res.json(); }, (res: Response) => this.onError(res.json()));
-        this.labelService.query().subscribe(
-            (res: Response) => { this.labels = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.bankAccountService.query()
+            .subscribe((res: ResponseWrapper) => { this.bankaccounts = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.labelService.query()
+            .subscribe((res: ResponseWrapper) => { this.labels = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
     clear() {
         this.activeModal.dismiss('cancel');

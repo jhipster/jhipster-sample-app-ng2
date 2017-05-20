@@ -10,6 +10,7 @@ import { BankAccount } from './bank-account.model';
 import { BankAccountPopupService } from './bank-account-popup.service';
 import { BankAccountService } from './bank-account.service';
 import { User, UserService } from '../../shared';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-bank-account-dialog',
@@ -35,8 +36,8 @@ export class BankAccountDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
-        this.userService.query().subscribe(
-            (res: Response) => { this.users = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.userService.query()
+            .subscribe((res: ResponseWrapper) => { this.users = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
     clear() {
         this.activeModal.dismiss('cancel');
