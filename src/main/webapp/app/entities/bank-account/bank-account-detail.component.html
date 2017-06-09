@@ -1,0 +1,33 @@
+
+<div *ngIf="bankAccount">
+    <h2><span jhiTranslate="jhipsterSampleApplicationNg2App.bankAccount.detail.title">Bank Account</span> {{bankAccount.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jhipsterSampleApplicationNg2App.bankAccount.name">Name</span></dt>
+        <dd>
+            <span>{{bankAccount.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationNg2App.bankAccount.balance">Balance</span></dt>
+        <dd>
+            <span>{{bankAccount.balance}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationNg2App.bankAccount.user">User</span></dt>
+        <dd>
+            {{bankAccount.user?.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'bank-account/'+ bankAccount.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,24 @@
+{
+    "jhipsterSampleApplicationNg2App": {
+        "bankAccount" : {
+            "home": {
+                "title": "BankAccounts",
+                "createLabel": "Créer un nouveau Bank Account",
+                "createOrEditLabel": "Créer ou éditer un Bank Account"
+            },
+            "created": "Un nouveau Bank Account a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Bank Account avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Bank Account avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Bank Account {{ id }} ?"
+            },
+            "detail": {
+                "title": "Bank Account"
+            },
+            "name": "Name",
+            "balance": "Balance",
+            "user": "User",
+            "operation": "Operation"
+        }
+    }
+}
