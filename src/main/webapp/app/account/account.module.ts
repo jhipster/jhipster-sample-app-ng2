@@ -5,10 +5,10 @@ import { JhipsterSampleApplicationNg2SharedModule } from '../shared';
 
 import {
     Register,
-    Activate,
-    Password,
-    PasswordResetInit,
-    PasswordResetFinish,
+    ActivateService,
+    PasswordService,
+    PasswordResetInitService,
+    PasswordResetFinishService,
     SessionsService,
     SessionsComponent,
     PasswordStrengthBarComponent,
@@ -39,10 +39,10 @@ import {
     providers: [
         SessionsService,
         Register,
-        Activate,
-        Password,
-        PasswordResetInit,
-        PasswordResetFinish
+        ActivateService,
+        PasswordService,
+        PasswordResetInitService,
+        PasswordResetFinishService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

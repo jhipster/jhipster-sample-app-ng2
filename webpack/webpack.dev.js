@@ -33,8 +33,8 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
     },
     output: {
         path: path.resolve('target/www'),
-        filename: '[name].bundle.js',
-        chunkFilename: '[id].chunk.js'
+        filename: 'app/[name].bundle.js',
+        chunkFilename: 'app/[id].chunk.js'
     },
     module: {
         rules: [{

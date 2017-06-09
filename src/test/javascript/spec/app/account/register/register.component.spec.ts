@@ -33,11 +33,8 @@ describe('Component Tests', () => {
                         useValue: null
                     }
                 ]
-            }).overrideComponent(RegisterComponent, {
-                set: {
-                    template: ''
-                }
-            }).compileComponents();
+            }).overrideTemplate(RegisterComponent, '')
+            .compileComponents();
         }));
 
         beforeEach(() => {

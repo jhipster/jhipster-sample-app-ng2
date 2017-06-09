@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { EventManager } from 'ng-jhipster';
+import { AlertService, EventManager } from 'ng-jhipster';
 
 import { User, UserService } from '../../shared';
 import { UserModalService } from './user-modal.service';
@@ -17,6 +17,7 @@ export class UserMgmtDeleteDialogComponent {
     constructor(
         private userService: UserService,
         public activeModal: NgbActiveModal,
+        private alertService: AlertService,
         private eventManager: EventManager
     ) {
     }
@@ -31,8 +32,8 @@ export class UserMgmtDeleteDialogComponent {
                 content: 'Deleted a user'});
             this.activeModal.dismiss(true);
         });
+        this.alertService.success('userManagement.deleted', { param : login }, null);
     }
-
 }
 
 @Component({
