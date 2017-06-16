@@ -1,9 +1,11 @@
-const commonConfig = require('./webpack.common.js');
 const webpackMerge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const Visualizer = require('webpack-visualizer-plugin');
 const path = require('path');
+
+const commonConfig = require('./webpack.common.js');
+
 const ENV = 'prod';
 
 module.exports = webpackMerge(commonConfig({ env: ENV }), {

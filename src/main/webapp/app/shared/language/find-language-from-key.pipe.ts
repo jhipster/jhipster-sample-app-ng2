@@ -32,6 +32,7 @@ export class FindLanguageFromKeyPipe implements PipeTransform {
         'ta': 'தமிழ்',
         'th': 'ไทย',
         'tr': 'Türkçe',
+        'ua': 'Українська',
         'vi': 'Tiếng Việt',
         'zh-cn': '中文（简体）',
         'zh-tw': '繁體中文'

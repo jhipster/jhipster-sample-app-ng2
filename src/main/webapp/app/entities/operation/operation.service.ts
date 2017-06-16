@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { DateUtils } from 'ng-jhipster';
+import { JhiDateUtils } from 'ng-jhipster';
 
 import { Operation } from './operation.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
@@ -11,7 +11,7 @@ export class OperationService {
 
     private resourceUrl = 'api/operations';
 
-    constructor(private http: Http, private dateUtils: DateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
     create(operation: Operation): Observable<Operation> {
         const copy = this.convert(operation);

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { EventManager, ParseLinks, PaginationUtil, JhiLanguageService, AlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks, JhiPaginationUtil, JhiLanguageService, JhiAlertService } from 'ng-jhipster';
 
 import { Operation } from './operation.model';
 import { OperationService } from './operation.service';
@@ -27,9 +27,9 @@ export class OperationComponent implements OnInit, OnDestroy {
 
     constructor(
         private operationService: OperationService,
-        private alertService: AlertService,
-        private eventManager: EventManager,
-        private parseLinks: ParseLinks,
+        private alertService: JhiAlertService,
+        private eventManager: JhiEventManager,
+        private parseLinks: JhiParseLinks,
         private principal: Principal
     ) {
         this.operations = [];
