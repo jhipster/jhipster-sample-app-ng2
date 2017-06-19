@@ -13,6 +13,8 @@ import { JhipsterSampleApplicationNg2EntityModule } from './entities/entity.modu
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 
+// jhipster-needle-angular-add-module-import JHipster will add new module here
+
 import {
     JhiMainComponent,
     LayoutRoutingModule,
@@ -33,7 +35,8 @@ import {
         JhipsterSampleApplicationNg2HomeModule,
         JhipsterSampleApplicationNg2AdminModule,
         JhipsterSampleApplicationNg2AccountModule,
-        JhipsterSampleApplicationNg2EntityModule
+        JhipsterSampleApplicationNg2EntityModule,
+        // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
         JhiMainComponent,
