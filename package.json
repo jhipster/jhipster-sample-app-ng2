@@ -99,20 +99,18 @@
   "scripts": {
     "lint": "tslint 'src/main/webapp/app/**/*.ts'",
     "lint:fix": "tslint 'src/main/webapp/app/**/*.ts' --fix",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
     "ngc": "ngc -p tsconfig-aot.json",
     "cleanup": "rimraf target/{aot,www}",
     "start": "yarn run webpack:dev",
-    "webpack:build": "yarn run ngc && webpack --config webpack/webpack.vendor.js && webpack --config webpack/webpack.dev.js",
-    "webpack:build:dev": "webpack --config webpack/webpack.dev.js",
-    "webpack:build:vendor": "webpack --config webpack/webpack.vendor.js",
-    "webpack:dev": "webpack-dev-server --config webpack/webpack.dev.js  --progress --inline --hot --profile --port=9060",
-    "webpack:test": "yarn run ngc && yarn run test",
-    "webpack:prod": "yarn run ngc && webpack -p --config webpack/webpack.vendor.js && webpack -p --config webpack/webpack.prod.js",
+    "webpack:dev": "webpack-dev-server --config webpack/webpack.dev.js --progress --inline --hot --profile --port=9060",
+    "webpack:build:vendor": "webpack --config webpack/webpack.vendor.js --progress --profile",
+    "webpack:build:dev": "webpack --config webpack/webpack.dev.js --progress --profile",
+    "webpack:build": "yarn run cleanup && yarn run webpack:build:vendor && yarn run webpack:build:dev",
+    "webpack:prod": "yarn run cleanup && webpack -p --config webpack/webpack.vendor.js --progress --profile && webpack -p --config webpack/webpack.prod.js --progress --profile",
+    "webpack:test": "yarn run test",
     "test": "yarn run lint && karma start src/test/javascript/karma.conf.js",
     "test:watch": "karma start src/test/javascript/karma.conf.js --watch",
     "e2e": "protractor src/test/javascript/protractor.conf.js",
-    "postinstall": "webdriver-manager update && node node_modules/phantomjs-prebuilt/install.js && yarn run webpack:build"
+    "postinstall": "webdriver-manager update && node node_modules/phantomjs-prebuilt/install.js"
   }
 }
