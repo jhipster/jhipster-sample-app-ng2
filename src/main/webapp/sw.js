@@ -1,5 +1,5 @@
-var dataCacheName = '"JhipsterSampleApplicationNg2-v1';
-var cacheName = '"JhipsterSampleApplicationNg2-1';
+var dataCacheName = 'JhipsterSampleApplicationNg2-v1';
+var cacheName = 'JhipsterSampleApplicationNg2-1';
 var filesToCache = [
     '/',
     '/index.html'

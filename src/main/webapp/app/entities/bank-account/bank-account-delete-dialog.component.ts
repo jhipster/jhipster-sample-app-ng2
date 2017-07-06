@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { BankAccount } from './bank-account.model';
 import { BankAccountPopupService } from './bank-account-popup.service';
@@ -19,7 +19,6 @@ export class BankAccountDeleteDialogComponent {
     constructor(
         private bankAccountService: BankAccountService,
         public activeModal: NgbActiveModal,
-        private alertService: JhiAlertService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -36,7 +35,6 @@ export class BankAccountDeleteDialogComponent {
             });
             this.activeModal.dismiss(true);
         });
-        this.alertService.success('jhipsterSampleApplicationNg2App.bankAccount.deleted', { param : id }, null);
     }
 }
 

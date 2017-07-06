@@ -48,24 +48,19 @@ export class LabelDialogComponent implements OnInit {
         this.isSaving = true;
         if (this.label.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.labelService.update(this.label), false);
+                this.labelService.update(this.label));
         } else {
             this.subscribeToSaveResponse(
-                this.labelService.create(this.label), true);
+                this.labelService.create(this.label));
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<Label>, isCreated: boolean) {
+    private subscribeToSaveResponse(result: Observable<Label>) {
         result.subscribe((res: Label) =>
-            this.onSaveSuccess(res, isCreated), (res: Response) => this.onSaveError(res));
+            this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
     }
 
-    private onSaveSuccess(result: Label, isCreated: boolean) {
-        this.alertService.success(
-            isCreated ? 'jhipsterSampleApplicationNg2App.label.created'
-            : 'jhipsterSampleApplicationNg2App.label.updated',
-            { param : result.id }, null);
-
+    private onSaveSuccess(result: Label) {
         this.eventManager.broadcast({ name: 'labelListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);

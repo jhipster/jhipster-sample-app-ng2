@@ -54,24 +54,19 @@ export class OperationDialogComponent implements OnInit {
         this.isSaving = true;
         if (this.operation.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.operationService.update(this.operation), false);
+                this.operationService.update(this.operation));
         } else {
             this.subscribeToSaveResponse(
-                this.operationService.create(this.operation), true);
+                this.operationService.create(this.operation));
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<Operation>, isCreated: boolean) {
+    private subscribeToSaveResponse(result: Observable<Operation>) {
         result.subscribe((res: Operation) =>
-            this.onSaveSuccess(res, isCreated), (res: Response) => this.onSaveError(res));
+            this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
     }
 
-    private onSaveSuccess(result: Operation, isCreated: boolean) {
-        this.alertService.success(
-            isCreated ? 'jhipsterSampleApplicationNg2App.operation.created'
-            : 'jhipsterSampleApplicationNg2App.operation.updated',
-            { param : result.id }, null);
-
+    private onSaveSuccess(result: Operation) {
         this.eventManager.broadcast({ name: 'operationListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);

@@ -48,24 +48,19 @@ export class BankAccountDialogComponent implements OnInit {
         this.isSaving = true;
         if (this.bankAccount.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.bankAccountService.update(this.bankAccount), false);
+                this.bankAccountService.update(this.bankAccount));
         } else {
             this.subscribeToSaveResponse(
-                this.bankAccountService.create(this.bankAccount), true);
+                this.bankAccountService.create(this.bankAccount));
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<BankAccount>, isCreated: boolean) {
+    private subscribeToSaveResponse(result: Observable<BankAccount>) {
         result.subscribe((res: BankAccount) =>
-            this.onSaveSuccess(res, isCreated), (res: Response) => this.onSaveError(res));
+            this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
     }
 
-    private onSaveSuccess(result: BankAccount, isCreated: boolean) {
-        this.alertService.success(
-            isCreated ? 'jhipsterSampleApplicationNg2App.bankAccount.created'
-            : 'jhipsterSampleApplicationNg2App.bankAccount.updated',
-            { param : result.id }, null);
-
+    private onSaveSuccess(result: BankAccount) {
         this.eventManager.broadcast({ name: 'bankAccountListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
