@@ -20,7 +20,6 @@ import { ResponseWrapper } from '../../shared';
 export class OperationDialogComponent implements OnInit {
 
     operation: Operation;
-    authorities: any[];
     isSaving: boolean;
 
     bankaccounts: BankAccount[];
@@ -39,7 +38,6 @@ export class OperationDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.bankAccountService.query()
             .subscribe((res: ResponseWrapper) => { this.bankaccounts = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.labelService.query()
@@ -112,7 +110,6 @@ export class OperationDialogComponent implements OnInit {
 })
 export class OperationPopupComponent implements OnInit, OnDestroy {
 
-    modalRef: NgbModalRef;
     routeSub: any;
 
     constructor(
@@ -123,11 +120,11 @@ export class OperationPopupComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-                this.modalRef = this.operationPopupService
-                    .open(OperationDialogComponent, params['id']);
+                this.operationPopupService
+                    .open(OperationDialogComponent as Component, params['id']);
             } else {
-                this.modalRef = this.operationPopupService
-                    .open(OperationDialogComponent);
+                this.operationPopupService
+                    .open(OperationDialogComponent as Component);
             }
         });
     }

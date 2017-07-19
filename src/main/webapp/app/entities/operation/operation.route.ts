@@ -9,8 +9,6 @@ import { OperationDetailComponent } from './operation-detail.component';
 import { OperationPopupComponent } from './operation-dialog.component';
 import { OperationDeletePopupComponent } from './operation-delete-dialog.component';
 
-import { Principal } from '../../shared';
-
 export const operationRoute: Routes = [
     {
         path: 'operation',

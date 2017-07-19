@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const Visualizer = require('webpack-visualizer-plugin');
 const ngcWebpack = require('ngc-webpack');
@@ -10,6 +9,7 @@ const utils = require('./utils.js');
 const commonConfig = require('./webpack.common.js');
 
 const ENV = 'production';
+const extractCSS = new ExtractTextPlugin(`[name].[hash].css`);
 
 module.exports = webpackMerge(commonConfig({ env: ENV }), {
     // devtool: 'source-map', // Enable source maps. Please note that this will slow down the build
@@ -26,12 +26,6 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
     module: {
         rules: [{
             test: /\.ts$/,
-            enforce: 'pre',
-            loaders: 'tslint-loader',
-            exclude: ['node_modules', new RegExp('reflect-metadata\\' + path.sep + 'Reflect\\.ts')]
-        },
-        {
-            test: /\.ts$/,
             use: [
                 { loader: 'angular2-template-loader' },
                 {
@@ -42,10 +36,22 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
                 }
             ],
             exclude: ['node_modules/generator-jhipster']
+        },
+        {
+            test: /\.css$/,
+            loaders: ['to-string-loader', 'css-loader'],
+            exclude: /(vendor\.css|global\.css)/
+        },
+        {
+            test: /(vendor\.css|global\.css)/,
+            use: extractCSS.extract({
+                fallback: 'style-loader',
+                use: ['css-loader']
+            })
         }]
     },
     plugins: [
-        new ExtractTextPlugin('[hash].styles.css'),
+        extractCSS,
         new Visualizer({
             // Webpack statistics in target folder
             filename: '../stats.html'

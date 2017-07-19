@@ -19,7 +19,6 @@ import { ResponseWrapper } from '../../shared';
 export class LabelDialogComponent implements OnInit {
 
     label: Label;
-    authorities: any[];
     isSaving: boolean;
 
     operations: Operation[];
@@ -35,7 +34,6 @@ export class LabelDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.operationService.query()
             .subscribe((res: ResponseWrapper) => { this.operations = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
@@ -102,7 +100,6 @@ export class LabelDialogComponent implements OnInit {
 })
 export class LabelPopupComponent implements OnInit, OnDestroy {
 
-    modalRef: NgbModalRef;
     routeSub: any;
 
     constructor(
@@ -113,11 +110,11 @@ export class LabelPopupComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-                this.modalRef = this.labelPopupService
-                    .open(LabelDialogComponent, params['id']);
+                this.labelPopupService
+                    .open(LabelDialogComponent as Component, params['id']);
             } else {
-                this.modalRef = this.labelPopupService
-                    .open(LabelDialogComponent);
+                this.labelPopupService
+                    .open(LabelDialogComponent as Component);
             }
         });
     }

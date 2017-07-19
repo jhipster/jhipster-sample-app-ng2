@@ -9,8 +9,6 @@ import { BankAccountDetailComponent } from './bank-account-detail.component';
 import { BankAccountPopupComponent } from './bank-account-dialog.component';
 import { BankAccountDeletePopupComponent } from './bank-account-delete-dialog.component';
 
-import { Principal } from '../../shared';
-
 export const bankAccountRoute: Routes = [
     {
         path: 'bank-account',

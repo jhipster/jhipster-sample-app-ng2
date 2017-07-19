@@ -44,7 +44,6 @@ export class BankAccountDeleteDialogComponent {
 })
 export class BankAccountDeletePopupComponent implements OnInit, OnDestroy {
 
-    modalRef: NgbModalRef;
     routeSub: any;
 
     constructor(
@@ -54,8 +53,8 @@ export class BankAccountDeletePopupComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            this.modalRef = this.bankAccountPopupService
-                .open(BankAccountDeleteDialogComponent, params['id']);
+            this.bankAccountPopupService
+                .open(BankAccountDeleteDialogComponent as Component, params['id']);
         });
     }
 

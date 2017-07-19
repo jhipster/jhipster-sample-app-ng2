@@ -19,7 +19,6 @@ import { ResponseWrapper } from '../../shared';
 export class BankAccountDialogComponent implements OnInit {
 
     bankAccount: BankAccount;
-    authorities: any[];
     isSaving: boolean;
 
     users: User[];
@@ -35,7 +34,6 @@ export class BankAccountDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.userService.query()
             .subscribe((res: ResponseWrapper) => { this.users = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
@@ -91,7 +89,6 @@ export class BankAccountDialogComponent implements OnInit {
 })
 export class BankAccountPopupComponent implements OnInit, OnDestroy {
 
-    modalRef: NgbModalRef;
     routeSub: any;
 
     constructor(
@@ -102,11 +99,11 @@ export class BankAccountPopupComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-                this.modalRef = this.bankAccountPopupService
-                    .open(BankAccountDialogComponent, params['id']);
+                this.bankAccountPopupService
+                    .open(BankAccountDialogComponent as Component, params['id']);
             } else {
-                this.modalRef = this.bankAccountPopupService
-                    .open(BankAccountDialogComponent);
+                this.bankAccountPopupService
+                    .open(BankAccountDialogComponent as Component);
             }
         });
     }

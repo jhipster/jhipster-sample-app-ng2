@@ -9,8 +9,6 @@ import { LabelDetailComponent } from './label-detail.component';
 import { LabelPopupComponent } from './label-dialog.component';
 import { LabelDeletePopupComponent } from './label-delete-dialog.component';
 
-import { Principal } from '../../shared';
-
 export const labelRoute: Routes = [
     {
         path: 'label',
