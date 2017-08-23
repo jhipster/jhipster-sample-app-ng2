@@ -1,49 +1,120 @@
 import { browser, element, by, $ } from 'protractor';
+import { NavBarPage } from './../page-objects/jhi-page-objects';
+const path = require('path');
 
 describe('BankAccount e2e test', () => {
 
-    const username = element(by.id('username'));
-    const password = element(by.id('password'));
-    const entityMenu = element(by.id('entity-menu'));
-    const accountMenu = element(by.id('account-menu'));
-    const login = element(by.id('login'));
-    const logout = element(by.id('logout'));
+    let navBarPage: NavBarPage;
+    let bankAccountDialogPage: BankAccountDialogPage;
+    let bankAccountComponentsPage: BankAccountComponentsPage;
+    const fileToUpload = '../../../../main/webapp/content/images/logo-jhipster.png';
+    const absolutePath = path.resolve(__dirname, fileToUpload);
+    
 
     beforeAll(() => {
         browser.get('/');
-
-        accountMenu.click();
-        login.click();
-
-        username.sendKeys('admin');
-        password.sendKeys('admin');
-        element(by.css('button[type=submit]')).click();
+        browser.waitForAngular();
+        navBarPage = new NavBarPage();
+        navBarPage.getSignInPage().autoSignInUsing('admin', 'admin');
         browser.waitForAngular();
     });
 
     it('should load BankAccounts', () => {
-        entityMenu.click();
-        element.all(by.css('[routerLink="bank-account"]')).first().click().then(() => {
-            const expectVal = /jhipsterSampleApplicationNg2App.bankAccount.home.title/;
-            element.all(by.css('h2 span')).first().getAttribute('jhiTranslate').then((value) => {
-                expect(value).toMatch(expectVal);
-            });
-        });
+        navBarPage.goToEntity('bank-account');
+        bankAccountComponentsPage = new BankAccountComponentsPage();
+        expect(bankAccountComponentsPage.getTitle()).toMatch(/jhipsterSampleApplicationNg2App.bankAccount.home.title/);
+
     });
 
     it('should load create BankAccount dialog', () => {
-        element(by.css('button.create-bank-account')).click().then(() => {
-            const expectVal = /jhipsterSampleApplicationNg2App.bankAccount.home.createOrEditLabel/;
-            element.all(by.css('h4.modal-title')).first().getAttribute('jhiTranslate').then((value) => {
-                expect(value).toMatch(expectVal);
-            });
-
-            element(by.css('button.close')).click();
-        });
+        bankAccountComponentsPage.clickOnCreateButton();
+        bankAccountDialogPage = new BankAccountDialogPage();
+        expect(bankAccountDialogPage.getModalTitle()).toMatch(/jhipsterSampleApplicationNg2App.bankAccount.home.createOrEditLabel/);
+        bankAccountDialogPage.close();
     });
+
+    it('should create and save BankAccounts', () => {
+        bankAccountComponentsPage.clickOnCreateButton();
+        bankAccountDialogPage.setNameInput('name');
+        expect(bankAccountDialogPage.getNameInput()).toMatch('name');
+        bankAccountDialogPage.setBalanceInput('5');
+        expect(bankAccountDialogPage.getBalanceInput()).toMatch('5');
+        bankAccountDialogPage.userSelectLastOption();
+        bankAccountDialogPage.save();
+        expect(bankAccountDialogPage.getSaveButton().isPresent()).toBeFalsy();
+    }); 
 
     afterAll(() => {
-        accountMenu.click();
-        logout.click();
+        navBarPage.autoSignOut();
     });
 });
+
+export class BankAccountComponentsPage {
+    createButton = element(by.css('.jh-create-entity'));
+    title = element.all(by.css('jhi-bank-account div h2 span')).first();
+
+    clickOnCreateButton() {
+        return this.createButton.click();
+    }
+
+    getTitle() {
+        return this.title.getAttribute('jhiTranslate');
+    }
+}
+
+export class BankAccountDialogPage {
+    modalTitle = element(by.css('h4#myBankAccountLabel'));
+    saveButton = element(by.css('.modal-footer .btn.btn-primary'));
+    closeButton = element(by.css('button.close'));
+    nameInput = element(by.css('input#field_name'));
+    balanceInput = element(by.css('input#field_balance'));
+    userSelect = element(by.css('select#field_user'));
+
+    getModalTitle() {
+        return this.modalTitle.getAttribute('jhiTranslate');
+    }
+
+    setNameInput = function (name) {
+        this.nameInput.sendKeys(name);
+    }
+
+    getNameInput = function () {
+        return this.nameInput.getAttribute('value');
+    }
+
+    setBalanceInput = function (balance) {
+        this.balanceInput.sendKeys(balance);
+    }
+
+    getBalanceInput = function () {
+        return this.balanceInput.getAttribute('value');
+    }
+
+    userSelectLastOption = function () {
+        this.userSelect.all(by.tagName('option')).last().click();
+    }
+
+    userSelectOption = function (option) {
+        this.userSelect.sendKeys(option);
+    }
+
+    getUserSelect = function () {
+        return this.userSelect;
+    }
+
+    getUserSelectedOption = function () {
+        return this.userSelect.element(by.css('option:checked')).getText();
+    }
+
+    save() {
+        this.saveButton.click();
+    }
+
+    close() {
+        this.closeButton.click();
+    }
+
+    getSaveButton() {
+        return this.saveButton;
+    }
+}

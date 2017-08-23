@@ -29,7 +29,7 @@ export class OperationPopupService {
             if (id) {
                 this.operationService.find(id).subscribe((operation) => {
                     operation.date = this.datePipe
-                        .transform(operation.date, 'yyyy-MM-ddThh:mm');
+                        .transform(operation.date, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.operationModalRef(component, operation);
                     resolve(this.ngbModalRef);
                 });

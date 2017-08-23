@@ -1,49 +1,149 @@
 import { browser, element, by, $ } from 'protractor';
+import { NavBarPage } from './../page-objects/jhi-page-objects';
+const path = require('path');
 
 describe('Operation e2e test', () => {
 
-    const username = element(by.id('username'));
-    const password = element(by.id('password'));
-    const entityMenu = element(by.id('entity-menu'));
-    const accountMenu = element(by.id('account-menu'));
-    const login = element(by.id('login'));
-    const logout = element(by.id('logout'));
+    let navBarPage: NavBarPage;
+    let operationDialogPage: OperationDialogPage;
+    let operationComponentsPage: OperationComponentsPage;
+    const fileToUpload = '../../../../main/webapp/content/images/logo-jhipster.png';
+    const absolutePath = path.resolve(__dirname, fileToUpload);
+    
 
     beforeAll(() => {
         browser.get('/');
-
-        accountMenu.click();
-        login.click();
-
-        username.sendKeys('admin');
-        password.sendKeys('admin');
-        element(by.css('button[type=submit]')).click();
+        browser.waitForAngular();
+        navBarPage = new NavBarPage();
+        navBarPage.getSignInPage().autoSignInUsing('admin', 'admin');
         browser.waitForAngular();
     });
 
     it('should load Operations', () => {
-        entityMenu.click();
-        element.all(by.css('[routerLink="operation"]')).first().click().then(() => {
-            const expectVal = /jhipsterSampleApplicationNg2App.operation.home.title/;
-            element.all(by.css('h2 span')).first().getAttribute('jhiTranslate').then((value) => {
-                expect(value).toMatch(expectVal);
-            });
-        });
+        navBarPage.goToEntity('operation');
+        operationComponentsPage = new OperationComponentsPage();
+        expect(operationComponentsPage.getTitle()).toMatch(/jhipsterSampleApplicationNg2App.operation.home.title/);
+
     });
 
     it('should load create Operation dialog', () => {
-        element(by.css('button.create-operation')).click().then(() => {
-            const expectVal = /jhipsterSampleApplicationNg2App.operation.home.createOrEditLabel/;
-            element.all(by.css('h4.modal-title')).first().getAttribute('jhiTranslate').then((value) => {
-                expect(value).toMatch(expectVal);
-            });
-
-            element(by.css('button.close')).click();
-        });
+        operationComponentsPage.clickOnCreateButton();
+        operationDialogPage = new OperationDialogPage();
+        expect(operationDialogPage.getModalTitle()).toMatch(/jhipsterSampleApplicationNg2App.operation.home.createOrEditLabel/);
+        operationDialogPage.close();
     });
+
+    it('should create and save Operations', () => {
+        operationComponentsPage.clickOnCreateButton();
+        operationDialogPage.setDateInput(12310020012301);
+        expect(operationDialogPage.getDateInput()).toMatch('2001-12-31T02:30');
+        operationDialogPage.setDescriptionInput('description');
+        expect(operationDialogPage.getDescriptionInput()).toMatch('description');
+        operationDialogPage.setAmountInput('5');
+        expect(operationDialogPage.getAmountInput()).toMatch('5');
+        operationDialogPage.bankAccountSelectLastOption();
+        // operationDialogPage.labelSelectLastOption();
+        operationDialogPage.save();
+        expect(operationDialogPage.getSaveButton().isPresent()).toBeFalsy();
+    }); 
 
     afterAll(() => {
-        accountMenu.click();
-        logout.click();
+        navBarPage.autoSignOut();
     });
 });
+
+export class OperationComponentsPage {
+    createButton = element(by.css('.jh-create-entity'));
+    title = element.all(by.css('jhi-operation div h2 span')).first();
+
+    clickOnCreateButton() {
+        return this.createButton.click();
+    }
+
+    getTitle() {
+        return this.title.getAttribute('jhiTranslate');
+    }
+}
+
+export class OperationDialogPage {
+    modalTitle = element(by.css('h4#myOperationLabel'));
+    saveButton = element(by.css('.modal-footer .btn.btn-primary'));
+    closeButton = element(by.css('button.close'));
+    dateInput = element(by.css('input#field_date'));
+    descriptionInput = element(by.css('input#field_description'));
+    amountInput = element(by.css('input#field_amount'));
+    bankAccountSelect = element(by.css('select#field_bankAccount'));
+    labelSelect = element(by.css('select#field_label'));
+
+    getModalTitle() {
+        return this.modalTitle.getAttribute('jhiTranslate');
+    }
+
+    setDateInput = function (date) {
+        this.dateInput.sendKeys(date);
+    }
+
+    getDateInput = function () {
+        return this.dateInput.getAttribute('value');
+    }
+
+    setDescriptionInput = function (description) {
+        this.descriptionInput.sendKeys(description);
+    }
+
+    getDescriptionInput = function () {
+        return this.descriptionInput.getAttribute('value');
+    }
+
+    setAmountInput = function (amount) {
+        this.amountInput.sendKeys(amount);
+    }
+
+    getAmountInput = function () {
+        return this.amountInput.getAttribute('value');
+    }
+
+    bankAccountSelectLastOption = function () {
+        this.bankAccountSelect.all(by.tagName('option')).last().click();
+    }
+
+    bankAccountSelectOption = function (option) {
+        this.bankAccountSelect.sendKeys(option);
+    }
+
+    getBankAccountSelect = function () {
+        return this.bankAccountSelect;
+    }
+
+    getBankAccountSelectedOption = function () {
+        return this.bankAccountSelect.element(by.css('option:checked')).getText();
+    }
+
+    labelSelectLastOption = function () {
+        this.labelSelect.all(by.tagName('option')).last().click();
+    }
+
+    labelSelectOption = function (option) {
+        this.labelSelect.sendKeys(option);
+    }
+
+    getLabelSelect = function () {
+        return this.labelSelect;
+    }
+
+    getLabelSelectedOption = function () {
+        return this.labelSelect.element(by.css('option:checked')).getText();
+    }
+
+    save() {
+        this.saveButton.click();
+    }
+
+    close() {
+        this.closeButton.click();
+    }
+
+    getSaveButton() {
+        return this.saveButton;
+    }
+}

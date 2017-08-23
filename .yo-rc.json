@@ -1,6 +1,6 @@
 {
   "generator-jhipster": {
-    "jhipsterVersion": "4.6.2",
+    "jhipsterVersion": "4.7.0",
     "baseName": "jhipsterSampleApplicationNG2",
     "packageName": "io.github.jhipster.sample",
     "packageFolder": "io/github/jhipster/sample",
