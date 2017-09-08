@@ -15,7 +15,6 @@
     "messageBroker": false,
     "buildTool": "maven",
     "enableSocialSignIn": false,
-    "rememberMeKey": "cd484ea36d54bb81f90e53e414d8cc84ad4aa61b",
     "useSass": false,
     "clientPackageManager": "yarn",
     "applicationType": "monolith",
@@ -32,6 +31,7 @@
       "fr"
     ],
     "serverPort": "8080",
-    "clientFramework": "angularX"
+    "clientFramework": "angularX",
+    "jwtSecretKey": "f7949caae4c0dc88ebfdad59e23abcda6e310a1a"
   }
 }

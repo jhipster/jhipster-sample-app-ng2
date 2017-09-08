@@ -8,6 +8,6 @@ export class PasswordService {
     constructor(private http: Http) {}
 
     save(newPassword: string): Observable<any> {
-        return this.http.post('api/account/change_password', newPassword);
+        return this.http.post('api/account/change-password', newPassword);
     }
 }
