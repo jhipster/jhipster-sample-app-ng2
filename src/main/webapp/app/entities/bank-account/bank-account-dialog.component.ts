@@ -25,7 +25,7 @@ export class BankAccountDialogComponent implements OnInit {
 
     constructor(
         public activeModal: NgbActiveModal,
-        private alertService: JhiAlertService,
+        private jhiAlertService: JhiAlertService,
         private bankAccountService: BankAccountService,
         private userService: UserService,
         private eventManager: JhiEventManager
@@ -69,7 +69,7 @@ export class BankAccountDialogComponent implements OnInit {
     }
 
     private onError(error: any) {
-        this.alertService.error(error.message, null, null);
+        this.jhiAlertService.error(error.message, null, null);
     }
 
     trackUserById(index: number, item: User) {

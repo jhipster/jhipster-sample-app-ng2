@@ -28,7 +28,7 @@ export class OperationDialogComponent implements OnInit {
 
     constructor(
         public activeModal: NgbActiveModal,
-        private alertService: JhiAlertService,
+        private jhiAlertService: JhiAlertService,
         private operationService: OperationService,
         private bankAccountService: BankAccountService,
         private labelService: LabelService,
@@ -75,7 +75,7 @@ export class OperationDialogComponent implements OnInit {
     }
 
     private onError(error: any) {
-        this.alertService.error(error.message, null, null);
+        this.jhiAlertService.error(error.message, null, null);
     }
 
     trackBankAccountById(index: number, item: BankAccount) {

@@ -13,6 +13,7 @@ export class AuthServerProvider {
     ) {}
 
     getToken() {
+
         return this.$localStorage.retrieve('authenticationToken') || this.$sessionStorage.retrieve('authenticationToken');
     }
 
@@ -53,6 +54,7 @@ export class AuthServerProvider {
     }
 
     logout(): Observable<any> {
+
         return new Observable((observer) => {
             this.$localStorage.clear('authenticationToken');
             this.$sessionStorage.clear('authenticationToken');
