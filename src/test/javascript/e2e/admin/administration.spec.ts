@@ -16,7 +16,6 @@ describe('administration', () => {
     beforeEach(() => {
         navBarPage.clickOnAdminMenu();
     });
-
     it('should load user management', () => {
         navBarPage.clickOnAdmin("user-management");
         const expect1 = /userManagement.home.title/;

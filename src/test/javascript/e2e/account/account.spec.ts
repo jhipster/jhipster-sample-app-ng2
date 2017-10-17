@@ -1,5 +1,5 @@
 import { browser, element, by } from 'protractor';
-import { NavBarPage, SignInPage, PasswordPage, SettingsPage } from './../page-objects/jhi-page-objects';
+import { NavBarPage, SignInPage, PasswordPage, SettingsPage} from './../page-objects/jhi-page-objects';
 
 describe('account', () => {
 
@@ -47,7 +47,6 @@ describe('account', () => {
             expect(value).toMatch(expect2);
         });
     });
-
     it('should be able to update settings', () => {
         settingsPage = navBarPage.getSettingsPage();
 
@@ -81,7 +80,7 @@ describe('account', () => {
         signInPage.autoSignInUsing('admin', 'newpassword');
 
         // change back to default
-        navBarPage.goToPasswordMenu()
+        navBarPage.goToPasswordMenu();
         passwordPage.setPassword('admin');
         passwordPage.setConfirmPassword('admin');
         passwordPage.save();
