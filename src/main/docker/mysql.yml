@@ -1,7 +1,7 @@
 version: '2'
 services:
     jhipstersampleapplicationng2-mysql:
-        image: mysql:5.7.19
+        image: mysql:5.7.20
         # volumes:
         #     - ~/volumes/jhipster/jhipsterSampleApplicationNG2/mysql/:/var/lib/mysql/
         environment:
