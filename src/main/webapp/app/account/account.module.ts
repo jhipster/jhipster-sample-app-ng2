@@ -22,7 +22,7 @@ import {
 @NgModule({
     imports: [
         JhipsterSampleApplicationNg2SharedModule,
-        RouterModule.forRoot(accountState, { useHash: true })
+        RouterModule.forChild(accountState)
     ],
     declarations: [
         ActivateComponent,

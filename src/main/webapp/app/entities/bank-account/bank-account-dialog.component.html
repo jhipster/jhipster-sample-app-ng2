@@ -15,7 +15,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationNg2App.bankAccount.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
-                [(ngModel)]="bankAccount.name" required />
+                [(ngModel)]="bankAccount.name" required/>
             <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
@@ -26,7 +26,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationNg2App.bankAccount.balance" for="field_balance">Balance</label>
             <input type="number" class="form-control" name="balance" id="field_balance"
-                [(ngModel)]="bankAccount.balance" required />
+                [(ngModel)]="bankAccount.balance" required/>
             <div [hidden]="!(editForm.controls.balance?.dirty && editForm.controls.balance?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.balance?.errors?.required" jhiTranslate="entity.validation.required">

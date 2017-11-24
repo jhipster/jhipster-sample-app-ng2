@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
-import { navbarRoute } from '../app.route';
-import { errorRoute } from './';
+import { errorRoute, navbarRoute } from './layouts';
 
 const LAYOUT_ROUTES = [
     navbarRoute,
@@ -17,4 +15,4 @@ const LAYOUT_ROUTES = [
         RouterModule
     ]
 })
-export class LayoutRoutingModule {}
+export class JhipsterSampleApplicationNg2AppRoutingModule {}

@@ -15,7 +15,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationNg2App.label.label" for="field_label">Label</label>
             <input type="text" class="form-control" name="label" id="field_label"
-                [(ngModel)]="label.label" required minlength="3" />
+                [(ngModel)]="label.label" required minlength="3"/>
             <div [hidden]="!(editForm.controls.label?.dirty && editForm.controls.label?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.label?.errors?.required" jhiTranslate="entity.validation.required">

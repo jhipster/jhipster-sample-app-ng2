@@ -5,11 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Ng2Webstorage } from 'ng2-webstorage';
 
 import { JhipsterSampleApplicationNg2SharedModule, UserRouteAccessService } from './shared';
+import { JhipsterSampleApplicationNg2AppRoutingModule} from './app-routing.module';
 import { JhipsterSampleApplicationNg2HomeModule } from './home/home.module';
 import { JhipsterSampleApplicationNg2AdminModule } from './admin/admin.module';
 import { JhipsterSampleApplicationNg2AccountModule } from './account/account.module';
 import { JhipsterSampleApplicationNg2EntityModule } from './entities/entity.module';
-
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 
@@ -17,7 +17,6 @@ import { PaginationConfig } from './blocks/config/uib-pagination.config';
 
 import {
     JhiMainComponent,
-    LayoutRoutingModule,
     NavbarComponent,
     FooterComponent,
     ProfileService,
@@ -29,7 +28,7 @@ import {
 @NgModule({
     imports: [
         BrowserModule,
-        LayoutRoutingModule,
+        JhipsterSampleApplicationNg2AppRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
         JhipsterSampleApplicationNg2SharedModule,
         JhipsterSampleApplicationNg2HomeModule,

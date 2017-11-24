@@ -69,8 +69,8 @@ liquibase:
 #    ssl:
 #        key-store: keystore.p12
 #        key-store-password: <your-password>
-#        keyStoreType: PKCS12
-#        keyAlias: jhipsterSampleApplicationNG2
+#        key-store-type: PKCS12
+#        key-alias: jhipsterSampleApplicationNG2
 # ===================================================================
 server:
     port: 8080
