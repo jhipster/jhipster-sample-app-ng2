@@ -1,15 +1,11 @@
-import { browser, element, by, $ } from 'protractor';
+import { browser, element, by } from 'protractor';
 import { NavBarPage } from './../page-objects/jhi-page-objects';
-const path = require('path');
 
 describe('Label e2e test', () => {
 
     let navBarPage: NavBarPage;
     let labelDialogPage: LabelDialogPage;
     let labelComponentsPage: LabelComponentsPage;
-    const fileToUpload = '../../../../main/webapp/content/images/logo-jhipster.png';
-    const absolutePath = path.resolve(__dirname, fileToUpload);
-    
 
     beforeAll(() => {
         browser.get('/');
@@ -39,7 +35,7 @@ describe('Label e2e test', () => {
         expect(labelDialogPage.getLabelInput()).toMatch('label');
         labelDialogPage.save();
         expect(labelDialogPage.getSaveButton().isPresent()).toBeFalsy();
-    }); 
+    });
 
     afterAll(() => {
         navBarPage.autoSignOut();
@@ -69,11 +65,11 @@ export class LabelDialogPage {
         return this.modalTitle.getAttribute('jhiTranslate');
     }
 
-    setLabelInput = function (label) {
+    setLabelInput = function(label) {
         this.labelInput.sendKeys(label);
     }
 
-    getLabelInput = function () {
+    getLabelInput = function() {
         return this.labelInput.getAttribute('value');
     }
 

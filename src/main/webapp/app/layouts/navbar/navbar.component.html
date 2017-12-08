@@ -122,7 +122,7 @@
                     </li>
                 </ul>
             </li>
-            <li ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li ngbDropdown class="nav-item dropdown pointer" placement="bottom-right" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
                   <span *ngIf="!getImageUrl()">
                     <i class="fa fa-user" aria-hidden="true"></i>
@@ -134,7 +134,7 @@
                       <img [src]="getImageUrl()" class="profile-image img-circle" alt="Avatar">
                   </span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-right ml-auto" ngbDropdownMenu>
+                <ul class="dropdown-menu" ngbDropdownMenu>
                     <li *ngSwitchCase="true">
                         <a class="dropdown-item" routerLink="settings" routerLinkActive="active" (click)="collapseNavbar()">
                             <i class="fa fa-fw fa-wrench" aria-hidden="true"></i>

@@ -1,9 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from '../../shared';
-import { JhiPaginationUtil } from 'ng-jhipster';
-
 import { BankAccountComponent } from './bank-account.component';
 import { BankAccountDetailComponent } from './bank-account-detail.component';
 import { BankAccountPopupComponent } from './bank-account-dialog.component';

@@ -14,13 +14,16 @@
         "lib": ["es6", "dom"],
         "typeRoots": [
             "node_modules/@types"
-        ]
+        ],
+        "baseUrl": "./",
+        "paths": {
+            "@angular/*": [
+                "../node_modules/@angular/*"
+            ]
+        }
     },
     "include": [
         "src/main/webapp/app",
         "src/test/javascript/"
-    ],
-    "exclude": [
-        "src/main/webapp/app/app.main-aot.ts"
     ]
 }

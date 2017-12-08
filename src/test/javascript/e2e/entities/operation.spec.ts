@@ -1,15 +1,11 @@
-import { browser, element, by, $ } from 'protractor';
+import { browser, element, by } from 'protractor';
 import { NavBarPage } from './../page-objects/jhi-page-objects';
-const path = require('path');
 
 describe('Operation e2e test', () => {
 
     let navBarPage: NavBarPage;
     let operationDialogPage: OperationDialogPage;
     let operationComponentsPage: OperationComponentsPage;
-    const fileToUpload = '../../../../main/webapp/content/images/logo-jhipster.png';
-    const absolutePath = path.resolve(__dirname, fileToUpload);
-    
 
     beforeAll(() => {
         browser.get('/');
@@ -45,7 +41,7 @@ describe('Operation e2e test', () => {
         // operationDialogPage.labelSelectLastOption();
         operationDialogPage.save();
         expect(operationDialogPage.getSaveButton().isPresent()).toBeFalsy();
-    }); 
+    });
 
     afterAll(() => {
         navBarPage.autoSignOut();
@@ -79,59 +75,59 @@ export class OperationDialogPage {
         return this.modalTitle.getAttribute('jhiTranslate');
     }
 
-    setDateInput = function (date) {
+    setDateInput = function(date) {
         this.dateInput.sendKeys(date);
     }
 
-    getDateInput = function () {
+    getDateInput = function() {
         return this.dateInput.getAttribute('value');
     }
 
-    setDescriptionInput = function (description) {
+    setDescriptionInput = function(description) {
         this.descriptionInput.sendKeys(description);
     }
 
-    getDescriptionInput = function () {
+    getDescriptionInput = function() {
         return this.descriptionInput.getAttribute('value');
     }
 
-    setAmountInput = function (amount) {
+    setAmountInput = function(amount) {
         this.amountInput.sendKeys(amount);
     }
 
-    getAmountInput = function () {
+    getAmountInput = function() {
         return this.amountInput.getAttribute('value');
     }
 
-    bankAccountSelectLastOption = function () {
+    bankAccountSelectLastOption = function() {
         this.bankAccountSelect.all(by.tagName('option')).last().click();
     }
 
-    bankAccountSelectOption = function (option) {
+    bankAccountSelectOption = function(option) {
         this.bankAccountSelect.sendKeys(option);
     }
 
-    getBankAccountSelect = function () {
+    getBankAccountSelect = function() {
         return this.bankAccountSelect;
     }
 
-    getBankAccountSelectedOption = function () {
+    getBankAccountSelectedOption = function() {
         return this.bankAccountSelect.element(by.css('option:checked')).getText();
     }
 
-    labelSelectLastOption = function () {
+    labelSelectLastOption = function() {
         this.labelSelect.all(by.tagName('option')).last().click();
     }
 
-    labelSelectOption = function (option) {
+    labelSelectOption = function(option) {
         this.labelSelect.sendKeys(option);
     }
 
-    getLabelSelect = function () {
+    getLabelSelect = function() {
         return this.labelSelect;
     }
 
-    getLabelSelectedOption = function () {
+    getLabelSelectedOption = function() {
         return this.labelSelect.element(by.css('option:checked')).getText();
     }
 

@@ -26,12 +26,12 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
 
     constructor(
         private userService: UserService,
-        private parseLinks: JhiParseLinks,
         private alertService: JhiAlertService,
         private principal: Principal,
-        private eventManager: JhiEventManager,
+        private parseLinks: JhiParseLinks,
         private activatedRoute: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private eventManager: JhiEventManager
     ) {
         this.itemsPerPage = ITEMS_PER_PAGE;
         this.routeData = this.activatedRoute.data.subscribe((data) => {

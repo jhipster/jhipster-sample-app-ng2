@@ -1,15 +1,11 @@
-import { browser, element, by, $ } from 'protractor';
+import { browser, element, by } from 'protractor';
 import { NavBarPage } from './../page-objects/jhi-page-objects';
-const path = require('path');
 
 describe('BankAccount e2e test', () => {
 
     let navBarPage: NavBarPage;
     let bankAccountDialogPage: BankAccountDialogPage;
     let bankAccountComponentsPage: BankAccountComponentsPage;
-    const fileToUpload = '../../../../main/webapp/content/images/logo-jhipster.png';
-    const absolutePath = path.resolve(__dirname, fileToUpload);
-    
 
     beforeAll(() => {
         browser.get('/');
@@ -42,7 +38,7 @@ describe('BankAccount e2e test', () => {
         bankAccountDialogPage.userSelectLastOption();
         bankAccountDialogPage.save();
         expect(bankAccountDialogPage.getSaveButton().isPresent()).toBeFalsy();
-    }); 
+    });
 
     afterAll(() => {
         navBarPage.autoSignOut();
@@ -74,35 +70,35 @@ export class BankAccountDialogPage {
         return this.modalTitle.getAttribute('jhiTranslate');
     }
 
-    setNameInput = function (name) {
+    setNameInput = function(name) {
         this.nameInput.sendKeys(name);
     }
 
-    getNameInput = function () {
+    getNameInput = function() {
         return this.nameInput.getAttribute('value');
     }
 
-    setBalanceInput = function (balance) {
+    setBalanceInput = function(balance) {
         this.balanceInput.sendKeys(balance);
     }
 
-    getBalanceInput = function () {
+    getBalanceInput = function() {
         return this.balanceInput.getAttribute('value');
     }
 
-    userSelectLastOption = function () {
+    userSelectLastOption = function() {
         this.userSelect.all(by.tagName('option')).last().click();
     }
 
-    userSelectOption = function (option) {
+    userSelectOption = function(option) {
         this.userSelect.sendKeys(option);
     }
 
-    getUserSelect = function () {
+    getUserSelect = function() {
         return this.userSelect;
     }
 
-    getUserSelectedOption = function () {
+    getUserSelectedOption = function() {
         return this.userSelect.element(by.css('option:checked')).getText();
     }
 

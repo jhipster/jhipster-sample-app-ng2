@@ -1,11 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { Label } from './label.model';
 import { LabelService } from './label.service';
-import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
+import { Principal, ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-label',
